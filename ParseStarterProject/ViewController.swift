@@ -61,7 +61,7 @@ class ViewController: UIViewController {
                     
                     if error == nil {
                         
-                        //self.performSegueWithIdentifier("loginSegue", sender: self)
+                        self.performSegueWithIdentifier("loginSegue", sender: self)
                         print("signed up")
                         
                     } else {
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
             
             if user != nil {
                 
-               // self.performSegueWithIdentifier("loginSegue", sender: self)
+               self.performSegueWithIdentifier("loginSegue", sender: self)
                 print("logged in")
                 
             } else {
@@ -110,7 +110,7 @@ class ViewController: UIViewController {
         
         if PFUser.currentUser() != nil {
             
-            //self.performSegueWithIdentifier("loginSegue", sender: self)
+            self.performSegueWithIdentifier("loginSegue", sender: self)
             
             print("already logged in")
         }
