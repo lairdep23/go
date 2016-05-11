@@ -45,7 +45,7 @@ class BackTableVC: UITableViewController {
         cell.textLabel?.text = tableArray[indexPath.row]
         
         if tableArray[indexPath.row] == "GoEat" {
-            cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 20.0)
+            cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
             cell.textLabel?.textAlignment = .Center
             cell.textLabel?.textColor = UIColor(red: 0.149, green: 0.776, blue: 0.855, alpha: 1.00)
             cell.backgroundColor = UIColor(red: 1.00, green: 0.718, blue: 0.302, alpha: 1.00)

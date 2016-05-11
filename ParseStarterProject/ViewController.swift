@@ -12,7 +12,7 @@
 import UIKit
 import Parse
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var username: UITextField!
@@ -24,8 +24,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        username.delegate = self
+        password.delegate = self 
         
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func signUpButton(sender: AnyObject) {
@@ -119,15 +129,9 @@ class ViewController: UIViewController {
 
 
     @IBAction func howItWorksButton(sender: AnyObject) {
+        //create how it works button
+        
     }
-
-
-
-
-
-
-
-
 
 
     func displayAlert(title: String, message: String) {
@@ -142,6 +146,9 @@ class ViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
+
+
+
 
    
 }

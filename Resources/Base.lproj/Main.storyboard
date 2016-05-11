@@ -46,7 +46,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZm-yC-iuQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZm-yC-iuQ" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
                                 <rect key="frame" x="250" y="340" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.14901960784313725" green="0.77647058823529413" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -61,7 +61,7 @@
                                     <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8af-ih-hnM"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvn-Fv-ZTh">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvn-Fv-ZTh" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
                                 <rect key="frame" x="250" y="441" width="100" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -316,29 +316,137 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ro-Ka-Hkp">
-                                <rect key="frame" x="67" y="97" width="46" height="21"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-ek-3UM">
+                                <rect key="frame" x="20" y="84" width="560" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Wck-4k-NsP"/>
-                                    <constraint firstAttribute="width" constant="34" id="dpc-lv-kNg"/>
+                                    <constraint firstAttribute="height" constant="350" id="BOB-r3-3Cd">
+                                        <variation key="widthClass=compact" constant="320"/>
+                                    </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-nw-vZR">
+                                <rect key="frame" x="20" y="454" width="560" height="126"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PM-Ut-aIe" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="29"/>
+                                        <color key="backgroundColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4c6-2a-Nux"/>
+                                            <constraint firstAttribute="width" constant="100" id="agp-zd-kHc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Confirm Location">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="agp-zd-kHc"/>
+                                                <exclude reference="4c6-2a-Nux"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="confirmLocation:" destination="tgL-hw-Uf0" eventType="touchUpInside" id="Z8o-BT-pQ2"/>
+                                            <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQi-xN-Dpi"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-i3-NCY">
+                                        <rect key="frame" x="0.0" y="48" width="560" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Willing to Travel? (In Miles)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="mOs-mC-Nqw">
+                                                <rect key="frame" x="0.0" y="0.0" width="460" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="201" id="YuF-0z-fdU"/>
+                                                    <constraint firstAttribute="height" constant="21" id="pnH-Q1-q1Q"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="YuF-0z-fdU"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1-100" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fbl-Fn-P38" customClass="MaterialTextField" customModule="GoEat" customModuleProvider="target">
+                                                <rect key="frame" x="460" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="2Si-qC-pYW"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="L1q-BN-7Wq"/>
+                                                    <constraint firstAttribute="height" constant="30" id="UqJ-h3-IFa"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="vQR-51-bOW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="UqJ-h3-IFa"/>
+                                                    </mask>
+                                                </variation>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="QBO-F1-pP4"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-Na-QnG" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="97" width="560" height="29"/>
+                                        <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="537-61-UkN"/>
+                                            <constraint firstAttribute="width" constant="100" id="xYL-U6-W1c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <state key="normal" title="Confirm Distance">
+                                            <color key="titleColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="xYL-U6-W1c"/>
+                                                <exclude reference="537-61-UkN"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="confirmDistance:" destination="tgL-hw-Uf0" eventType="touchUpInside" id="UpE-Fu-H3b"/>
+                                            <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FKV-h7-OnY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zwq-Na-QnG" firstAttribute="height" secondItem="5PM-Ut-aIe" secondAttribute="height" id="EU9-zL-txz"/>
+                                    <constraint firstAttribute="trailing" secondItem="yeX-i3-NCY" secondAttribute="trailing" id="ZPx-Kf-xDp"/>
+                                    <constraint firstAttribute="trailing" secondItem="5PM-Ut-aIe" secondAttribute="trailing" id="hY0-pP-O9B"/>
+                                    <constraint firstAttribute="trailing" secondItem="zwq-Na-QnG" secondAttribute="trailing" id="wq2-FW-8WS"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="3ro-Ka-Hkp" firstAttribute="top" secondItem="kpY-rd-mL5" secondAttribute="bottom" constant="33" id="BWX-2v-FGI"/>
-                            <constraint firstItem="3ro-Ka-Hkp" firstAttribute="leading" secondItem="Niv-Q4-KJo" secondAttribute="leadingMargin" constant="59" id="iln-FP-mt2"/>
+                            <constraint firstItem="1Ht-aP-C2f" firstAttribute="top" secondItem="NcS-nw-vZR" secondAttribute="bottom" constant="20" id="O1p-Sr-2qc"/>
+                            <constraint firstItem="NcS-nw-vZR" firstAttribute="leading" secondItem="Niv-Q4-KJo" secondAttribute="leadingMargin" id="QId-5v-yag"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NcS-nw-vZR" secondAttribute="trailing" id="W6r-KA-IPt"/>
+                            <constraint firstItem="cHn-ek-3UM" firstAttribute="trailing" secondItem="Niv-Q4-KJo" secondAttribute="trailingMargin" id="cyP-TA-dmC"/>
+                            <constraint firstItem="cHn-ek-3UM" firstAttribute="top" secondItem="kpY-rd-mL5" secondAttribute="bottom" constant="20" id="dDh-eX-Xhn"/>
+                            <constraint firstItem="NcS-nw-vZR" firstAttribute="top" secondItem="cHn-ek-3UM" secondAttribute="bottom" constant="20" id="lQb-VA-4uu"/>
+                            <constraint firstItem="cHn-ek-3UM" firstAttribute="leading" secondItem="Niv-Q4-KJo" secondAttribute="leadingMargin" id="x2f-3Z-CdX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8ce-co-TQo">
                         <barButtonItem key="leftBarButtonItem" title="Menu" id="zM7-wH-gSJ">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Restart" id="3vb-Gd-pCX">
+                            <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="restartButton:" destination="tgL-hw-Uf0" id="Pim-X5-fOo"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="confirmLoc" destination="5PM-Ut-aIe" id="dFj-K0-DuI"/>
+                        <outlet property="distanceButton" destination="zwq-Na-QnG" id="n6q-0E-bu0"/>
+                        <outlet property="distanceLabel" destination="mOs-mC-Nqw" id="G0i-Mb-N9Z"/>
+                        <outlet property="distanceTextField" destination="Fbl-Fn-P38" id="TTw-7X-1Oa"/>
+                        <outlet property="map" destination="cHn-ek-3UM" id="GN0-8s-4q4"/>
                         <outlet property="open" destination="zM7-wH-gSJ" id="Xkx-Q1-5gY"/>
                     </connections>
                 </viewController>

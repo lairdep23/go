@@ -17,6 +17,9 @@
 		2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */; };
 		2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDD1CE285E3006C3F72 /* SupportVC.swift */; };
 		2002BDE01CE285FC006C3F72 /* LogOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDF1CE285FC006C3F72 /* LogOutVC.swift */; };
+		2002BDF31CE2DF8B006C3F72 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF01CE2DF8B006C3F72 /* MaterialView.swift */; };
+		2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */; };
+		2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -42,6 +45,9 @@
 		2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		2002BDDD1CE285E3006C3F72 /* SupportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
 		2002BDDF1CE285FC006C3F72 /* LogOutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutVC.swift; sourceTree = "<group>"; };
+		2002BDF01CE2DF8B006C3F72 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
+		2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +97,16 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
+		2002BDEF1CE2DF74006C3F72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2002BDF01CE2DF8B006C3F72 /* MaterialView.swift */,
+				2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */,
+				2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		814C3AC51B69877600E307BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +140,7 @@
 		81BA81471A49DA1800E65899 /* GoEat */ = {
 			isa = PBXGroup;
 			children = (
+				2002BDEF1CE2DF74006C3F72 /* Model */,
 				2002BDD41CE284C7006C3F72 /* ViewControllers */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
@@ -229,9 +246,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */,
 				2002BDD81CE28541006C3F72 /* upgradeVC.swift in Sources */,
 				2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */,
+				2002BDF31CE2DF8B006C3F72 /* MaterialView.swift in Sources */,
 				2002BDD31CE28093006C3F72 /* BackTableVC.swift in Sources */,
+				2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */,
 				2002BDD11CE27E55006C3F72 /* HomeVC.swift in Sources */,
 				2002BDDA1CE28564006C3F72 /* ShareVC.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
