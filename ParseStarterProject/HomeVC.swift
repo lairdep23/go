@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 import Parse
 
+var hasMadeRestRequest = false
+
 class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var open: UIBarButtonItem!
@@ -94,6 +96,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
 
 
     @IBAction func confirmLocation(sender: AnyObject) {
+        print("\(lat)\(long)")
+        print(PFUser.currentUser()?.username)
         
         let restRequest = PFObject(className: "restRequest")
         restRequest["username"] = PFUser.currentUser()?.username
@@ -103,6 +107,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             if success {
                 
                 self.confirmedLocation = true
+                hasMadeRestRequest = true
                 
             } else {
                 
@@ -133,9 +138,11 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
             if error == nil {
                 
-                if let objects = objects as? [PFObject]! {
+                if let objects = objects as [PFObject]! {
                     for object in objects {
                         object.deleteInBackground()
+                        self.confirmedLocation = false
+                        hasMadeRestRequest = false
                     }
                 }
                 
@@ -155,7 +162,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
             if error == nil {
                 
-                if let objects = objects as? [PFObject]! {
+                if let objects = objects as [PFObject]! {
                     
                     for object in objects {
                 
@@ -163,7 +170,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                     
                         if self.distanceTextField != "" {
                             
-                            var query = PFQuery(className: "restRequest")
+                            let query = PFQuery(className: "restRequest")
                             query.getObjectInBackgroundWithId(object.objectId!, block: { (object: PFObject?, error: NSError?) in
                                 
                                 if error != nil {

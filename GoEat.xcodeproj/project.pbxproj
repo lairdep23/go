@@ -16,7 +16,6 @@
 		2002BDDA1CE28564006C3F72 /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD91CE28564006C3F72 /* ShareVC.swift */; };
 		2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */; };
 		2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDD1CE285E3006C3F72 /* SupportVC.swift */; };
-		2002BDE01CE285FC006C3F72 /* LogOutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDF1CE285FC006C3F72 /* LogOutVC.swift */; };
 		2002BDF31CE2DF8B006C3F72 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF01CE2DF8B006C3F72 /* MaterialView.swift */; };
 		2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */; };
 		2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */; };
@@ -44,7 +43,6 @@
 		2002BDD91CE28564006C3F72 /* ShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
 		2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		2002BDDD1CE285E3006C3F72 /* SupportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
-		2002BDDF1CE285FC006C3F72 /* LogOutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogOutVC.swift; sourceTree = "<group>"; };
 		2002BDF01CE2DF8B006C3F72 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		2002BDD41CE284C7006C3F72 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2002BDDF1CE285FC006C3F72 /* LogOutVC.swift */,
 				2002BDDD1CE285E3006C3F72 /* SupportVC.swift */,
 				2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */,
 				2002BDD91CE28564006C3F72 /* ShareVC.swift */,
@@ -257,7 +254,6 @@
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				2002BDD61CE2852D006C3F72 /* profileVC.swift in Sources */,
 				2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */,
-				2002BDE01CE285FC006C3F72 /* LogOutVC.swift in Sources */,
 				2002BDCF1CE27C82006C3F72 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

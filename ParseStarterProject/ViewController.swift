@@ -118,11 +118,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
-        if PFUser.currentUser() != nil {
+        if PFUser.currentUser()?.username != nil {
             
             self.performSegueWithIdentifier("loginSegue", sender: self)
             
-            print("already logged in")
+           // print("already logged in")
         }
     }
 

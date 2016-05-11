@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class BackTableVC: UITableViewController {
     
     var tableArray = [String]()
+    var willDeleteRequests = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,12 +48,7 @@ class BackTableVC: UITableViewController {
         
         if tableArray[indexPath.row] == "GoEat" {
             
-            cell.imageView?.image = UIImage(named: "logo")
-            
-           /* cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
-            cell.textLabel?.textAlignment = .Center
-            cell.textLabel?.textColor = UIColor(red: 0.149, green: 0.776, blue: 0.855, alpha: 1.00)
- */
+            cell.imageView?.image = UIImage(named: "logoSmall")
             cell.backgroundColor = UIColor(red: 1.00, green: 0.800, blue: 0.502, alpha: 1.00)
             
         } else {
@@ -62,51 +59,86 @@ class BackTableVC: UITableViewController {
         }
         return cell
     }
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if tableArray[indexPath.row] == "Log Out" {
+            
+            self.displayLogOutAlert("Are You Sure?", message: "All requests will be canceled if you log out.")
+            
+        }
+    }
+    
+    func displayLogOutAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Log Out :(", style: .Default, handler: { (action) in
+            
+            print(PFUser.currentUser()?.username!)
+            
+            if action.enabled {
+                
+                do {
+            
+            let query = PFQuery(className: "restRequest")
+            query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+            query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+                
+                if error == nil {
+                    
+                    if objects!.count > 0 {
+                        
+                        if let objects = objects as [PFObject]! {
+                            for object in objects {
+                                  object.deleteInBackgroundWithBlock({ (success, error) in
+                                    
+                                    if success {
+                                        
+                                        PFUser.logOut()
+                                        self.performSegueWithIdentifier("logOutSegue", sender: self)
+                                    }
+                                    
+                                  })
+                                
+            
+                                }
+                            }
+                        }
+                    }
+                    }
+                } 
+                
+                
+            
+            }
+            
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+            
+            self.performSegueWithIdentifier("homeVCSegue", sender: self)
+            self.willDeleteRequests = false
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
