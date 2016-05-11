@@ -42,15 +42,20 @@ class BackTableVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(tableArray[indexPath.row], forIndexPath: indexPath)
 
-        cell.textLabel?.text = tableArray[indexPath.row]
+        
         
         if tableArray[indexPath.row] == "GoEat" {
-            cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
+            
+            cell.imageView?.image = UIImage(named: "logo")
+            
+           /* cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 25.0)
             cell.textLabel?.textAlignment = .Center
             cell.textLabel?.textColor = UIColor(red: 0.149, green: 0.776, blue: 0.855, alpha: 1.00)
-            cell.backgroundColor = UIColor(red: 1.00, green: 0.718, blue: 0.302, alpha: 1.00)
+ */
+            cell.backgroundColor = UIColor(red: 1.00, green: 0.800, blue: 0.502, alpha: 1.00)
             
         } else {
+            cell.textLabel?.text = tableArray[indexPath.row]
             cell.textLabel?.font = UIFont(name: "Helvetica Neue", size: 17.0)
             cell.backgroundColor = UIColor(red: 1.00, green: 0.800, blue: 0.502, alpha: 1.00)
             cell.textLabel?.textColor = UIColor(red: 0.329, green: 0.431, blue: 0.478, alpha: 1.00)

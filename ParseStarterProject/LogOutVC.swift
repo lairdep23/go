@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Parse
 
 class LogOutVC: UIViewController {
 
     @IBOutlet weak var open: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +28,49 @@ class LogOutVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func backHomeButton(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("backHomeSegue", sender: self)
+        
     }
-    */
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "logOutSegue" {
+            
+            let query = PFQuery(className: "restRequest")
+            query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+            query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+                
+                if error == nil {
+                    
+                    if let objects = objects as? [PFObject]! {
+                        for object in objects {
+                            object.deleteInBackground()
+                            PFUser.logOut()
+                        }
+                    }
+                    
+                } else {
+                    
+                    self.displayAlert("Could not log out", message: "\(error)")
+                }
+            }
+
+        }
+    }
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
 
 }
