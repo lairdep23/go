@@ -59,6 +59,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        let logo = UIImage(named: "logoSmall")
+        let imageView = UIImageView(image: logo)
+        self.navigationItem.titleView = imageView
+        
     }
     
     func dismissKeyboard() {
@@ -179,7 +183,17 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                                     
                                     object["userDistance"] = self.distanceTextField.text
                                     
-                                    object.saveInBackground()
+                                    object.saveInBackgroundWithBlock({ (success, error) in
+                                        
+                                        if error == nil {
+                                            self.performSegueWithIdentifier("homeToRequestSegue", sender: nil)
+                                        } else {
+                                           
+                                            self.displayAlert("Could not confirm distance", message: "Please try again in a little bit, thank you!")
+                                        }
+                                    })
+                                    
+                                    
                                 }
                             })
                 

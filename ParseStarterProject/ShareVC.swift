@@ -19,6 +19,11 @@ class ShareVC: UIViewController {
         open.action = Selector("revealToggle:")
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        let logo = UIImage(named: "logoSmall")
+        let imageView = UIImageView(image: logo)
+        self.navigationItem.titleView = imageView
+        
     }
 
     override func didReceiveMemoryWarning() {

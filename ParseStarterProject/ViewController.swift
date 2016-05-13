@@ -25,7 +25,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         username.delegate = self
-        password.delegate = self 
+        password.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
     }
     
