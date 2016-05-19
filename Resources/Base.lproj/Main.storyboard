@@ -636,7 +636,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Hjf-Xc-qCm"/>
                                 </constraints>
                                 <color key="textColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>

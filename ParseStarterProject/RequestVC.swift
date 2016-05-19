@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Alamofire
 
 
 class RequestVC: UIViewController, UITextFieldDelegate {
@@ -28,6 +29,8 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     var fourPressed = false
     
     var priceRange = "1,2,3,4"
+    var confirmedKeyword = ""
+    var url = ""
     
     var nonSelectedColor = UIColor(red: 1.00, green: 0.800, blue: 0.502, alpha: 0.50)
     
@@ -50,6 +53,10 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.tintColor = UIColor(red: 1.000, green: 0.718, blue: 0.302, alpha: 1.00)
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        print(USER_DISTANCE)
+        print(USER_LAT)
+        print(USER_LONG)
     }
     
     func dismissKeyboard() {
@@ -76,6 +83,10 @@ class RequestVC: UIViewController, UITextFieldDelegate {
                             if success {
                                 
                                 hasMadeRestRequest = false
+                                
+                                USER_LAT = ""
+                                USER_LONG = ""
+                                USER_DISTANCE = ""
                                 
                                 self.navigationController?.popToRootViewControllerAnimated(true)
                             }
@@ -137,6 +148,8 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func confirmPnK(sender: AnyObject) {
         
+        //ConfirmPrice
+        
         if onePressed == true {
             
             if twoPressed == true && threePressed == false && fourPressed == false {
@@ -187,9 +200,29 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         }
         
         print(priceRange)
+        
+        //confirm Keyword
+        
+        if keyword.text != "" {
+            confirmedKeyword = keyword.text!
+        }
+        
+        
     }
     
     @IBAction func findRestaurant(sender: AnyObject) {
+        
+        if keyword.text != "" {
+            
+            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
+        } else {
+            url = URL_BASE + "&section=food" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
+        }
+        
+        print(url)
+        
+        
+        
     }
     
     func displayAlert(title: String, message: String) {
@@ -204,6 +237,19 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
+    
+    func downloadFoursquareRest(completed: DownloadComplete) {
+        
+        if keyword.text != "" {
+            
+            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
+        } else {
+            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
+        }
+        
+    }
+        
+    
     
     
 

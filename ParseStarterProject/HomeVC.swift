@@ -110,6 +110,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
             if success {
                 
+                USER_LAT = "\(self.lat)"
+                USER_LONG = "\(self.long)"
+                
                 self.confirmedLocation = true
                 hasMadeRestRequest = true
                 
@@ -135,6 +138,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     }
     
     @IBAction func restartButton(sender: AnyObject) {
+    
         
         let query = PFQuery(className: "restRequest")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
@@ -144,9 +148,20 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 
                 if let objects = objects as [PFObject]! {
                     for object in objects {
-                        object.deleteInBackground()
-                        self.confirmedLocation = false
-                        hasMadeRestRequest = false
+                        object.deleteInBackgroundWithBlock({ (success, error) in
+                          
+                            if success {
+                                self.confirmedLocation = false
+                                hasMadeRestRequest = false
+                                
+                                USER_LAT = ""
+                                USER_LONG = ""
+                                USER_DISTANCE = ""
+                                
+                            }
+                            
+                        })
+                        
                     }
                 }
                 
@@ -172,7 +187,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 
                     if self.confirmedLocation == true {
                     
-                        if self.distanceTextField != "" {
+                        if self.distanceTextField.text != "" {
+                            
+                            let confirmedDistanceMeters = Double(self.distanceTextField.text!)! * 1609
                             
                             let query = PFQuery(className: "restRequest")
                             query.getObjectInBackgroundWithId(object.objectId!, block: { (object: PFObject?, error: NSError?) in
@@ -181,12 +198,12 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                                     print(error)
                                 } else if let object = object {
                                     
-                                    object["userDistance"] = self.distanceTextField.text
-                                    
+                                    object["userDistance"] = "\(confirmedDistanceMeters)"
                                     object.saveInBackgroundWithBlock({ (success, error) in
                                         
                                         if error == nil {
                                             self.performSegueWithIdentifier("homeToRequestSegue", sender: nil)
+                                            USER_DISTANCE = "\(confirmedDistanceMeters)"
                                         } else {
                                            
                                             self.displayAlert("Could not confirm distance", message: "Please try again in a little bit, thank you!")
