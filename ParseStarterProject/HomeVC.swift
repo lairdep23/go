@@ -133,7 +133,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
         
     }
     

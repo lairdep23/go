@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-import Alamofire
+
 
 
 class RequestVC: UIViewController, UITextFieldDelegate {
@@ -31,6 +31,8 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     var priceRange = "1,2,3,4"
     var confirmedKeyword = ""
     var url = ""
+    
+    
     
     var nonSelectedColor = UIColor(red: 1.00, green: 0.800, blue: 0.502, alpha: 0.50)
     
@@ -219,7 +221,11 @@ class RequestVC: UIViewController, UITextFieldDelegate {
             url = URL_BASE + "&section=food" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
         }
         
-        print(url)
+        restaurant = Restaurant(url: url)
+        
+        print(restaurant.url)
+        
+        performSegueWithIdentifier("foundRestSegue", sender: self)
         
         
         
@@ -237,20 +243,6 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-    
-    func downloadFoursquareRest(completed: DownloadComplete) {
-        
-        if keyword.text != "" {
-            
-            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
-        } else {
-            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
-        }
-        
-    }
-        
-    
-    
-    
+
 
 }

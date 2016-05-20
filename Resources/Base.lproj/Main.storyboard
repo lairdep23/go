@@ -677,7 +677,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="fourButton" destination="NtI-D3-HU0" id="zaE-FA-dYl"/>
                         <outlet property="keyword" destination="Lkk-2k-Vie" id="Lir-nZ-xoO"/>
@@ -685,11 +684,134 @@
                         <outlet property="threeButton" destination="o1B-XI-ppT" id="vMC-q1-BMM"/>
                         <outlet property="twoButton" destination="eMN-8y-Saf" id="Ue0-JW-scd"/>
                         <segue destination="Mmh-Re-pTa" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="luE-Pt-d3j"/>
+                        <segue destination="2pj-2E-5TH" kind="show" id="f36-LG-oED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9v-Ha-iAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1247" y="-698"/>
+        </scene>
+        <!--Found RestVC-->
+        <scene sceneID="tzX-0S-Xn2">
+            <objects>
+                <viewController id="2pj-2E-5TH" customClass="FoundRestVC" customModule="GoEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y1h-oo-FVO"/>
+                        <viewControllerLayoutGuide type="bottom" id="mB8-Yg-XBE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zHa-66-Hgw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Found!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="2fq-JN-zbB">
+                                <rect key="frame" x="20" y="72" width="560" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="Kxq-UX-Cl4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your new favorite restaurant is only 10 miles away, so what are you waiting for and..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zdx-ZN-y1d">
+                                <rect key="frame" x="46" y="384" width="534" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="snJ-ZQ-Uzk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4d-lq-hSI" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                <rect key="frame" x="20" y="492" width="560" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8OE-SS-MBM"/>
+                                    <constraint firstAttribute="height" constant="36" id="iDK-5t-MqY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Get Directions Now!">
+                                    <color key="titleColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8OE-SS-MBM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="confirmLocation:" destination="tgL-hw-Uf0" eventType="touchUpInside" id="sKu-Ip-dWE"/>
+                                    <action selector="confirmPnK:" destination="JtQ-gC-p8W" eventType="touchUpInside" id="ouz-Z6-sk2"/>
+                                    <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f0s-MF-IhG"/>
+                                </connections>
+                            </button>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ket-h2-j2X">
+                                <rect key="frame" x="20" y="544" width="560" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uber Rides Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-YQ-h77">
+                                        <rect key="frame" x="8" y="8" width="544" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1fl-YQ-h77" firstAttribute="centerX" secondItem="ket-h2-j2X" secondAttribute="centerX" id="Q7R-Og-itW"/>
+                                    <constraint firstAttribute="height" constant="36" id="Wts-gb-tRA"/>
+                                    <constraint firstAttribute="bottom" secondItem="1fl-YQ-h77" secondAttribute="bottom" constant="8" id="Zor-Xt-Mft"/>
+                                    <constraint firstAttribute="trailing" secondItem="1fl-YQ-h77" secondAttribute="trailing" constant="8" id="emK-UZ-px0"/>
+                                    <constraint firstItem="1fl-YQ-h77" firstAttribute="top" secondItem="ket-h2-j2X" secondAttribute="top" constant="8" id="hWO-SB-ppi"/>
+                                    <constraint firstItem="1fl-YQ-h77" firstAttribute="centerY" secondItem="ket-h2-j2X" secondAttribute="centerY" id="k9h-Nc-mQd"/>
+                                    <constraint firstItem="1fl-YQ-h77" firstAttribute="leading" secondItem="ket-h2-j2X" secondAttribute="leading" constant="8" id="kxg-uy-mNK"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your restaurant suggestion is..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-fM-kMc">
+                                <rect key="frame" x="46" y="143" width="534" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="xN9-Kj-gg2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Foursquare" translatesAutoresizingMaskIntoConstraints="NO" id="f83-8L-Cgz">
+                                <rect key="frame" x="46" y="183" width="534" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="UgB-kt-n1X"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Pmx-fM-kMc" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="1f0-jm-JBj"/>
+                            <constraint firstItem="Y4d-lq-hSI" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" id="54A-pE-8Ac"/>
+                            <constraint firstItem="Y4d-lq-hSI" firstAttribute="top" secondItem="Zdx-ZN-y1d" secondAttribute="bottom" constant="8" id="5fz-F9-XiN"/>
+                            <constraint firstItem="2fq-JN-zbB" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="6vm-A7-OXx"/>
+                            <constraint firstItem="ket-h2-j2X" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="AdH-lb-h89"/>
+                            <constraint firstItem="Zdx-ZN-y1d" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="BkY-sk-RLx"/>
+                            <constraint firstItem="mB8-Yg-XBE" firstAttribute="top" secondItem="ket-h2-j2X" secondAttribute="bottom" constant="20" id="CHi-yP-hVv"/>
+                            <constraint firstItem="Pmx-fM-kMc" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" constant="26" id="J10-ne-PMb"/>
+                            <constraint firstItem="Y4d-lq-hSI" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="USZ-DI-8kz"/>
+                            <constraint firstItem="2fq-JN-zbB" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" id="Va6-sk-n33"/>
+                            <constraint firstItem="ket-h2-j2X" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" id="ZVm-wm-5JT"/>
+                            <constraint firstItem="f83-8L-Cgz" firstAttribute="trailing" secondItem="zHa-66-Hgw" secondAttribute="trailingMargin" id="d20-hw-K4C"/>
+                            <constraint firstItem="f83-8L-Cgz" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" constant="26" id="ea0-fM-K9c"/>
+                            <constraint firstItem="f83-8L-Cgz" firstAttribute="top" secondItem="Pmx-fM-kMc" secondAttribute="bottom" constant="16" id="lwu-tn-pN0"/>
+                            <constraint firstItem="2fq-JN-zbB" firstAttribute="top" secondItem="y1h-oo-FVO" secondAttribute="bottom" constant="8" id="p5A-3f-LO2"/>
+                            <constraint firstItem="Pmx-fM-kMc" firstAttribute="top" secondItem="2fq-JN-zbB" secondAttribute="bottom" constant="16" id="sNz-gZ-4bh"/>
+                            <constraint firstItem="ket-h2-j2X" firstAttribute="top" secondItem="Y4d-lq-hSI" secondAttribute="bottom" constant="16" id="syo-fk-Fwk"/>
+                            <constraint firstItem="Zdx-ZN-y1d" firstAttribute="leading" secondItem="zHa-66-Hgw" secondAttribute="leadingMargin" constant="26" id="tmm-xn-kKd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LvP-e4-6Vu">
+                        <barButtonItem key="rightBarButtonItem" title="Restart" id="ze7-Io-fL2">
+                            <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D4g-wg-fGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-585" y="-698"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qNU-L4-sPv">
@@ -985,6 +1107,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Foursquare" width="600" height="100"/>
         <image name="foodImage2" width="2459" height="3673"/>
         <image name="logo" width="399" height="157"/>
     </resources>

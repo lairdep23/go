@@ -14,6 +14,7 @@ let URL_BASE = "https://api.foursquare.com/v2/venues/explore?&client_id=B0YPNYWY
 var USER_LAT = ""
 var USER_LONG = ""
 var USER_DISTANCE = ""
+var restaurant: Restaurant!
 
 
-typealias DownloadComplete = () -> ()
+typealias DownloadComplete = () -> Void 
