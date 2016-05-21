@@ -317,7 +317,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-ek-3UM">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cHn-ek-3UM">
                                 <rect key="frame" x="20" y="84" width="560" height="350"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="BOB-r3-3Cd">
@@ -325,11 +325,11 @@
                                     </constraint>
                                 </constraints>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-nw-vZR">
-                                <rect key="frame" x="20" y="454" width="560" height="126"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="NcS-nw-vZR">
+                                <rect key="frame" x="20" y="454" width="560" height="170"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PM-Ut-aIe" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="29"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5PM-Ut-aIe" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="51"/>
                                         <color key="backgroundColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4c6-2a-Nux"/>
@@ -350,8 +350,8 @@
                                             <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xQi-xN-Dpi"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-i3-NCY">
-                                        <rect key="frame" x="0.0" y="48" width="560" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yeX-i3-NCY">
+                                        <rect key="frame" x="0.0" y="70" width="560" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Willing to Travel? (In Miles)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="mOs-mC-Nqw">
                                                 <rect key="frame" x="0.0" y="0.0" width="460" height="30"/>
@@ -391,8 +391,8 @@
                                             <constraint firstAttribute="height" constant="30" id="QBO-F1-pP4"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-Na-QnG" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="97" width="560" height="29"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwq-Na-QnG" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="119" width="560" height="51"/>
                                         <color key="backgroundColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="537-61-UkN"/>
@@ -470,7 +470,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance Confirmed!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-cc-J25">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distance Confirmed!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-cc-J25">
                                 <rect key="frame" x="20" y="72" width="560" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="gX0-9j-7wu"/>
@@ -479,13 +479,13 @@
                                 <color key="textColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Price Range..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfM-Xh-xY1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set Price Range..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfM-Xh-xY1">
                                 <rect key="frame" x="40" y="147" width="534" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a Keyword..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YaL-jJ-MOl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set a Keyword..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YaL-jJ-MOl">
                                 <rect key="frame" x="40" y="374" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="QXa-4r-rZx"/>
@@ -494,7 +494,7 @@
                                 <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In the Mood for Something in Particular? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZVm-Zr-SPB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="In the Mood for Something in Particular? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZVm-Zr-SPB">
                                 <rect key="frame" x="40" y="330" width="540" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="0pz-M2-rZc"/>
@@ -553,7 +553,7 @@
                                     <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9QU-SY-0Lw"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1MA-cj-HUs">
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="1MA-cj-HUs">
                                 <rect key="frame" x="40" y="187" width="540" height="123"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Irg-9S-YJy" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
@@ -630,7 +630,7 @@
                                     <constraint firstItem="NtI-D3-HU0" firstAttribute="width" secondItem="o1B-XI-ppT" secondAttribute="width" id="i2n-j2-A99"/>
                                 </constraints>
                             </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Burgers, Mexican" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-2k-Vie">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="e.g. Burgers, Mexican" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lkk-2k-Vie">
                                 <rect key="frame" x="40" y="420" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Hjf-Xc-qCm"/>
@@ -684,7 +684,7 @@
                         <outlet property="threeButton" destination="o1B-XI-ppT" id="vMC-q1-BMM"/>
                         <outlet property="twoButton" destination="eMN-8y-Saf" id="Ue0-JW-scd"/>
                         <segue destination="Mmh-Re-pTa" kind="custom" customClass="SWRevealViewControllerSegueSetController" id="luE-Pt-d3j"/>
-                        <segue destination="2pj-2E-5TH" kind="show" id="f36-LG-oED"/>
+                        <segue destination="2pj-2E-5TH" kind="show" identifier="foundRestSegue" id="f36-LG-oED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9v-Ha-iAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -712,7 +712,7 @@
                                 <color key="textColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your new favorite restaurant is only 10 miles away, so what are you waiting for and..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zdx-ZN-y1d">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your new favorite restaurant is only miles away, so what are you waiting for and..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zdx-ZN-y1d">
                                 <rect key="frame" x="46" y="384" width="534" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="snJ-ZQ-Uzk"/>
@@ -740,6 +740,7 @@
                                 <connections>
                                     <action selector="confirmLocation:" destination="tgL-hw-Uf0" eventType="touchUpInside" id="sKu-Ip-dWE"/>
                                     <action selector="confirmPnK:" destination="JtQ-gC-p8W" eventType="touchUpInside" id="ouz-Z6-sk2"/>
+                                    <action selector="getDirections:" destination="2pj-2E-5TH" eventType="touchUpInside" id="EKn-LW-dPS"/>
                                     <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f0s-MF-IhG"/>
                                 </connections>
                             </button>
@@ -805,9 +806,15 @@
                     <navigationItem key="navigationItem" id="LvP-e4-6Vu">
                         <barButtonItem key="rightBarButtonItem" title="Restart" id="ze7-Io-fL2">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="restartButton:" destination="2pj-2E-5TH" id="ucd-Ao-67L"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="favRestLabel" destination="Zdx-ZN-y1d" id="Eor-iO-3yK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4g-wg-fGR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

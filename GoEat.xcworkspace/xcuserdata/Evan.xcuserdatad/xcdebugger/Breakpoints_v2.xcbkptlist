@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/Restaurant.swift"
-            timestampString = "485474696.613629"
+            timestampString = "485493688.490759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "downloadFoursquareRest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/Restaurant.swift"
-            timestampString = "485474696.613629"
+            timestampString = "485493688.490759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "downloadFoursquareRest(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/Restaurant.swift"
-            timestampString = "485474696.613629"
+            timestampString = "485493688.490759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "downloadFoursquareRest(_:)"
             landmarkType = "5">
             <Locations>
@@ -58,12 +58,12 @@
                   moduleName = "GoEat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
-                  timestampString = "485476540.561877"
+                  timestampString = "485493688.688686"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "3964">
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "5652">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "GoEat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
-                  timestampString = "485476540.562016"
+                  timestampString = "485493688.688822"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "4408">
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "6096">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ParseStarterProject/Restaurant.swift"
-            timestampString = "485474696.613629"
+            timestampString = "485493688.490759"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "downloadFoursquareRest(_:)"
             landmarkType = "5">
             <Locations>
@@ -106,12 +106,12 @@
                   moduleName = "GoEat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
-                  timestampString = "485476540.562936"
+                  timestampString = "485493688.689847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "4693">
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "6381">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,14 +121,510 @@
                   moduleName = "GoEat"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
-                  timestampString = "485476540.563106"
+                  timestampString = "485493688.689984"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "5130">
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "6818">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.691102"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "7115">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.691337"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "7552">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.692606"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "7858">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.69282"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "8295">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.69397"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "8601">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.694176"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "8906">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.695244"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "3652">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.695407"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "3957">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.696457"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "3995">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.696597"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "131"
+                  endingLineNumber = "131"
+                  offsetFromSymbolStart = "4439">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.69746"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "10632">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.697602"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "11069">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.698354"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1310">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.69848"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "1611">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.699997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "2121">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.700122"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "122"
+                  endingLineNumber = "122"
+                  offsetFromSymbolStart = "2426">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493164.742316"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.701519"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "591">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoEat.Restaurant.(downloadFoursquareRest (() -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "GoEat"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Evan/Desktop/RobVideos/GoEat/ParseStarterProject/Restaurant.swift"
+                  timestampString = "485493688.70164"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "891">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ParseStarterProject/Restaurant.swift"
+            timestampString = "485493688.490759"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "downloadFoursquareRest(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
