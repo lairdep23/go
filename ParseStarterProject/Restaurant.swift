@@ -21,6 +21,7 @@ class Restaurant {
     private var _websiteUrl: String!
     private var _phoneNumber: String!
     var couldntFind = false
+    
 
     
     var name: String {
@@ -132,16 +133,18 @@ class Restaurant {
                                                 
                                                 if let name = venueDict["name"] as? String {
                                                     self._name = name
+                                                    print(self._name)
                                                 }
-                                                print(self._name)
+                                                
                                                 
                                                 if let contactDict = venueDict["contact"] as? Dictionary<String, AnyObject> {
                                                     
                                                     if let phone = contactDict["phone"] as? String {
                                                         self._phoneNumber = phone
+                                                        print(self._phoneNumber)
                                                     }
                                                     
-                                                    print(self._phoneNumber)
+                                                    
                                                 }
                                                 
                                                 if let locationDict = venueDict["location"] as? Dictionary<String, AnyObject> {
@@ -167,6 +170,8 @@ class Restaurant {
                                                     }
                                                     
                                                     print("\(self._address), \(self._city), \(self._state) \(self._zip) which is \(Double(self._distance) * 0.000621371) miles away")
+                                                    
+                                                    
                                                     
                                                 }
                                                 

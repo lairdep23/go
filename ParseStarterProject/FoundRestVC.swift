@@ -8,10 +8,12 @@
 
 import UIKit
 import Parse
+import MapKit
 
 class FoundRestVC: UIViewController {
 
     @IBOutlet weak var favRestLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class FoundRestVC: UIViewController {
             if restaurant.couldntFind == false {
                 
                 self.updateUI()
+                
+                
                 
             } else {
                 
@@ -56,6 +60,31 @@ class FoundRestVC: UIViewController {
     }
 
     @IBAction func getDirections(sender: AnyObject) {
+        
+        let address = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
+        
+        let geoCoder = CLGeocoder()
+        
+        geoCoder.geocodeAddressString(address) { (placemark, error) in
+            
+            if (placemark?[0]) != nil {
+                
+                let mkPlace = MKPlacemark(placemark: placemark![0])
+                
+                let mapItem = MKMapItem(placemark: mkPlace)
+                
+                mapItem.name = "Your New Fav Restaurant"
+                
+                let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                
+                mapItem.openInMapsWithLaunchOptions(launchOptions)
+                
+            }
+        }
+        
+        
+        
+        
     }
     
     @IBAction func restartButton(sender: AnyObject) {
