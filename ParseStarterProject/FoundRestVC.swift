@@ -145,5 +145,42 @@ class FoundRestVC: UIViewController {
         
     }
     
+    
+    @IBAction func callRest(sender: AnyObject) {
+        
+        displayCallAlert("We hope to have this feature soon!", message: "Until then here is their number. But remember, this ruins the suprise!")
+        
+        
+    }
+    
+    func displayCallAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Call", style: .Default, handler: { (action) in
+            
+            if restaurant.phoneNumber != "" {
+            
+            let phone = "tel://\(restaurant.phoneNumber)"
+            let url: NSURL = NSURL(string: phone)!
+            print(url)
+            UIApplication.sharedApplication().openURL(url)
+                
+            } else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+                self.displayAlert("Could not find number", message: "We are sorry but we could not find this restaurants number :(")
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel , handler: { (action) in
+            
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    
 
 }

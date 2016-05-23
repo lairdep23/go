@@ -111,77 +111,92 @@ class Restaurant {
                 
                 if let responseDict = dict["response"] as? Dictionary<String, AnyObject> {
                     
-                    if let groupsDict = responseDict["groups"] as? [Dictionary<String, AnyObject>] {
-                        
-                        if let arrayDict = groupsDict[0] as? Dictionary<String, AnyObject> {
+                    if let resultsNumber = responseDict["totalResults"] as? Int {
+                        if resultsNumber == 0 {
+                            print("No results")
+                            self.couldntFind = true
+                            completed()
+                        } else {
+                            print("We got results")
+                            self.couldntFind = false
                             
-                            if let itemsArrayDict = arrayDict["items"] as? [Dictionary<String, AnyObject>] {
+                            if let groupsDict = responseDict["groups"] as? [Dictionary<String, AnyObject>] {
                                 
-                                if let itemsDict = itemsArrayDict[0] as? Dictionary<String, AnyObject> {
+                                if let arrayDict = groupsDict[0] as? Dictionary<String, AnyObject> {
                                     
-                                    if let venueDict = itemsDict["venue"] as? Dictionary<String, AnyObject> {
+                                    if let itemsArrayDict = arrayDict["items"] as? [Dictionary<String, AnyObject>] {
                                         
-                                        if let name = venueDict["name"] as? String {
-                                            self._name = name
+                                        if let itemsDict = itemsArrayDict[0] as? Dictionary<String, AnyObject> {
+                                            
+                                            if let venueDict = itemsDict["venue"] as? Dictionary<String, AnyObject> {
+                                                
+                                                if let name = venueDict["name"] as? String {
+                                                    self._name = name
+                                                }
+                                                print(self._name)
+                                                
+                                                if let contactDict = venueDict["contact"] as? Dictionary<String, AnyObject> {
+                                                    
+                                                    if let phone = contactDict["phone"] as? String {
+                                                        self._phoneNumber = phone
+                                                    }
+                                                    
+                                                    print(self._phoneNumber)
+                                                }
+                                                
+                                                if let locationDict = venueDict["location"] as? Dictionary<String, AnyObject> {
+                                                    
+                                                    if let address = locationDict["address"] as? String {
+                                                        self._address = address
+                                                    }
+                                                    
+                                                    if let city = locationDict["city"] as? String {
+                                                        self._city = city
+                                                    }
+                                                    
+                                                    if let state = locationDict["state"] as? String {
+                                                        self._state = state
+                                                    }
+                                                    
+                                                    if let zipcode = locationDict["postalCode"] as? String {
+                                                        self._zip = zipcode
+                                                    }
+                                                    
+                                                    if let distance = locationDict["distance"] as? Int {
+                                                        self._distance = distance
+                                                    }
+                                                    
+                                                    print("\(self._address), \(self._city), \(self._state) \(self._zip) which is \(Double(self._distance) * 0.000621371) miles away")
+                                                    
+                                                }
+                                                
+                                                if let webUrl = venueDict["url"] as? String {
+                                                    self._websiteUrl = webUrl
+                                                }
+                                                
+                                                //print(self._websiteUrl)
+                                                
+                                            }
+                                            
                                         }
-                                        print(self._name)
                                         
-                                        if let contactDict = venueDict["contact"] as? Dictionary<String, AnyObject> {
-                                            
-                                            if let phone = contactDict["phone"] as? String {
-                                                self._phoneNumber = phone
-                                            }
-                                            
-                                            print(self._phoneNumber)
-                                        }
-                                        
-                                        if let locationDict = venueDict["location"] as? Dictionary<String, AnyObject> {
-                                            
-                                            if let address = locationDict["address"] as? String {
-                                                self._address = address
-                                            }
-                                            
-                                            if let city = locationDict["city"] as? String {
-                                                self._city = city
-                                            }
-                                            
-                                            if let state = locationDict["state"] as? String {
-                                                self._state = state
-                                            }
-                                            
-                                            if let zipcode = locationDict["postalCode"] as? String {
-                                                self._zip = zipcode
-                                            }
-                                            
-                                            if let distance = locationDict["distance"] as? Int {
-                                                self._distance = distance
-                                            }
-                                            
-                                            print("\(self._address), \(self._city), \(self._state) \(self._zip) which is \(Double(self._distance) * 0.000621371) miles away")
-                                        
-                                        }
-                                        
-                                        if let webUrl = venueDict["url"] as? String {
-                                            self._websiteUrl = webUrl
-                                        }
-                                        
-                                        print(self._websiteUrl)
-                                    
                                     }
                                     
                                 }
                                 
                             }
-                            
                         }
                         
                     }
-                    }
-                
+                    
+                    completed()
                 }
-            
-            completed()
+                            
+                            
+            }
         }
+                    
+                    
     }
         
 }

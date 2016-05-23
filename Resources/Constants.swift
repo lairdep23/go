@@ -17,4 +17,5 @@ var USER_DISTANCE = ""
 var restaurant: Restaurant!
 
 
+
 typealias DownloadComplete = () -> Void 

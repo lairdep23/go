@@ -116,9 +116,8 @@ class BackTableVC: UITableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
             
-            self.performSegueWithIdentifier("homeVCSegue", sender: self)
             self.willDeleteRequests = false
         }))
         
