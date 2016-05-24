@@ -33,6 +33,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     var lat: CLLocationDegrees = 0.0
     var long: CLLocationDegrees = 0.0
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -138,6 +140,15 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     }
     
     @IBAction func restartButton(sender: AnyObject) {
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
     
         
         let query = PFQuery(className: "restRequest")
@@ -146,11 +157,18 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
             if error == nil {
                 
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
                 if let objects = objects as [PFObject]! {
                     for object in objects {
                         object.deleteInBackgroundWithBlock({ (success, error) in
                           
                             if success {
+                                
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                
                                 self.confirmedLocation = false
                                 hasMadeRestRequest = false
                                 
@@ -158,6 +176,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                                 USER_LONG = ""
                                 USER_DISTANCE = ""
                                 
+                            } else {
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                             }
                             
                         })
@@ -167,12 +188,24 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 
             } else {
                 
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
                 self.displayAlert("Could not restart", message: "\(error)")
             }
         }
     }
     
     @IBAction func confirmDistance(sender: AnyObject) {
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         
         let query = PFQuery(className: "restRequest")
@@ -201,6 +234,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                                     object["userDistance"] = "\(confirmedDistanceMeters)"
                                     object.saveInBackgroundWithBlock({ (success, error) in
                                         
+                                        self.activityIndicator.stopAnimating()
+                                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                        
                                         if error == nil {
                                             self.performSegueWithIdentifier("homeToRequestSegue", sender: nil)
                                             USER_DISTANCE = "\(confirmedDistanceMeters)"
@@ -216,9 +252,15 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 
                         } else {
                             
+                            self.activityIndicator.stopAnimating()
+                            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                            
                         self.displayAlert("Could not confirm distance", message: "Please type in a distance willing to travel between 1-100, thank you!")
                         }
                     } else {
+                        
+                        self.activityIndicator.stopAnimating()
+                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     
                         self.displayAlert("Could not confirm distance", message: "Please confirm your location first, thank you!")
                     
@@ -226,6 +268,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 }
                 
             } else {
+                    
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 self.displayAlert("Could not confirm distance", message: "\(error)")
             }

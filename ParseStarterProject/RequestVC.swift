@@ -23,6 +23,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var keyword: UITextField!
     
+    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     var onePressed = false
     var twoPressed = false
     var threePressed = false
@@ -52,6 +55,8 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         threeButton.backgroundColor = nonSelectedColor
         fourButton.backgroundColor = nonSelectedColor
         
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         self.navigationController?.navigationBar.tintColor = UIColor(red: 1.000, green: 0.718, blue: 0.302, alpha: 1.00)
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -72,6 +77,15 @@ class RequestVC: UIViewController, UITextFieldDelegate {
 
     @IBAction func restartButton(sender: AnyObject) {
         
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
         let query = PFQuery(className: "restRequest")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
@@ -90,13 +104,22 @@ class RequestVC: UIViewController, UITextFieldDelegate {
                                 USER_LONG = ""
                                 USER_DISTANCE = ""
                                 
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                
                                 self.navigationController?.popToRootViewControllerAnimated(true)
+                            } else {
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                             }
                         })
                     }
                 }
                 
             } else {
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 self.displayAlert("Could not restart", message: "\(error)")
             }

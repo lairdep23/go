@@ -14,9 +14,24 @@ class FoundRestVC: UIViewController {
 
     @IBOutlet weak var favRestLabel: UILabel!
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 
         restaurant.downloadFoursquareRest { () -> () in
             
@@ -24,9 +39,10 @@ class FoundRestVC: UIViewController {
                 
                 self.updateUI()
                 
-                
-                
             } else {
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 self.displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
             }
@@ -42,6 +58,9 @@ class FoundRestVC: UIViewController {
     }
     
     func updateUI() {
+        
+        self.activityIndicator.stopAnimating()
+        UIApplication.sharedApplication().endIgnoringInteractionEvents()
         
         if restaurant.couldntFind == false {
             
@@ -79,6 +98,10 @@ class FoundRestVC: UIViewController {
                 
                 mapItem.openInMapsWithLaunchOptions(launchOptions)
                 
+                self.performSegueWithIdentifier("arrivedSegue", sender: self)
+                
+            } else {
+                self.displayRestartAlert("We are very sorry :(", message: "We could not find the address of this restaurant, please restart and try again!")
             }
         }
         
@@ -88,6 +111,15 @@ class FoundRestVC: UIViewController {
     }
     
     @IBAction func restartButton(sender: AnyObject) {
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         let query = PFQuery(className: "restRequest")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
@@ -107,13 +139,22 @@ class FoundRestVC: UIViewController {
                                 USER_LONG = ""
                                 USER_DISTANCE = ""
                                 
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                
                                 self.navigationController?.popToRootViewControllerAnimated(true)
+                            } else {
+                                self.activityIndicator.stopAnimating()
+                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                             }
                         })
                     }
                 }
                 
             } else {
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 self.displayAlert("Could not restart", message: "\(error)")
             }

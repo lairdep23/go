@@ -21,6 +21,7 @@
 		2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */; };
 		2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */; };
 		201174831CED4AAA00E70BDF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201174821CED4AAA00E70BDF /* Constants.swift */; };
+		2049B1A61CF4D50600950454 /* AfterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049B1A51CF4D50600950454 /* AfterVC.swift */; };
 		2050CC261CEF900A00606A4C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC251CEF900A00606A4C /* Restaurant.swift */; };
 		2050CC281CEF955D00606A4C /* FoundRestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC271CEF955D00606A4C /* FoundRestVC.swift */; };
 		20C978C61CE5472A00F7671B /* RequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C978C51CE5472A00F7671B /* RequestVC.swift */; };
@@ -52,6 +53,7 @@
 		2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		201174821CED4AAA00E70BDF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2049B1A51CF4D50600950454 /* AfterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterVC.swift; sourceTree = "<group>"; };
 		2050CC251CEF900A00606A4C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2050CC271CEF955D00606A4C /* FoundRestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundRestVC.swift; sourceTree = "<group>"; };
 		20C978C51CE5472A00F7671B /* RequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestVC.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				2002BDD91CE28564006C3F72 /* ShareVC.swift */,
 				2002BDD71CE28541006C3F72 /* upgradeVC.swift */,
 				2002BDD51CE2852D006C3F72 /* profileVC.swift */,
+				2049B1A51CF4D50600950454 /* AfterVC.swift */,
 				2050CC271CEF955D00606A4C /* FoundRestVC.swift */,
 				20C978C51CE5472A00F7671B /* RequestVC.swift */,
 				2002BDD01CE27E55006C3F72 /* HomeVC.swift */,
@@ -324,6 +327,7 @@
 				20C978C61CE5472A00F7671B /* RequestVC.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */,
+				2049B1A61CF4D50600950454 /* AfterVC.swift in Sources */,
 				2002BDD81CE28541006C3F72 /* upgradeVC.swift in Sources */,
 				2050CC261CEF900A00606A4C /* Restaurant.swift in Sources */,
 				2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */,

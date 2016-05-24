@@ -45,5 +45,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Need your location to find the best restaurant near you!</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
