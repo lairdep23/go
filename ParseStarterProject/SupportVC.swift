@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import MessageUI
 
-class SupportVC: UIViewController {
+class SupportVC: UIViewController, MFMailComposeViewControllerDelegate {
 
+    
     @IBOutlet weak var open: UIBarButtonItem!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,20 +29,38 @@ class SupportVC: UIViewController {
         self.navigationItem.titleView = imageView
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func emailButton(sender: AnyObject) {
+        
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["support@GoEat.com"])
+            
+            presentViewController(mail, animated: true, completion: nil)
+            
+        } else {
+            
+            displayAlert("Could not send email", message: "We are sorry, but we were unable to connect with email client")
+            
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
-    */
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
 
 }
