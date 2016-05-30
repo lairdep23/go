@@ -229,7 +229,11 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         //confirm Keyword
         
         if keyword.text != "" {
-            confirmedKeyword = keyword.text!
+            
+            let spaceKeyword = keyword.text!
+            
+            confirmedKeyword = spaceKeyword.stringByReplacingOccurrencesOfString(" ", withString: "")
+            
         }
         
         

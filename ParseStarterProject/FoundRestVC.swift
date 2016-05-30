@@ -98,7 +98,12 @@ class FoundRestVC: UIViewController {
                 
                 mapItem.openInMapsWithLaunchOptions(launchOptions)
                 
-                self.performSegueWithIdentifier("arrivedSegue", sender: self)
+                if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
+                    
+                    self.performSegueWithIdentifier("arrivedSegue", sender: self)
+                    
+                }
+                
                 
             } else {
                 self.displayRestartAlert("We are very sorry :(", message: "We could not find the address of this restaurant, please restart and try again!")

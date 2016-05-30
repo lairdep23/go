@@ -12,7 +12,6 @@
 		2002BDCF1CE27C82006C3F72 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDCE1CE27C82006C3F72 /* SWRevealViewController.m */; };
 		2002BDD11CE27E55006C3F72 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD01CE27E55006C3F72 /* HomeVC.swift */; };
 		2002BDD31CE28093006C3F72 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD21CE28093006C3F72 /* BackTableVC.swift */; };
-		2002BDD61CE2852D006C3F72 /* profileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD51CE2852D006C3F72 /* profileVC.swift */; };
 		2002BDD81CE28541006C3F72 /* upgradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD71CE28541006C3F72 /* upgradeVC.swift */; };
 		2002BDDA1CE28564006C3F72 /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD91CE28564006C3F72 /* ShareVC.swift */; };
 		2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */; };
@@ -25,6 +24,8 @@
 		2050CC261CEF900A00606A4C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC251CEF900A00606A4C /* Restaurant.swift */; };
 		2050CC281CEF955D00606A4C /* FoundRestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC271CEF955D00606A4C /* FoundRestVC.swift */; };
 		20C978C61CE5472A00F7671B /* RequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C978C51CE5472A00F7671B /* RequestVC.swift */; };
+		20FABDB01CF63FC000190BC1 /* ProfileTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FABDAF1CF63FC000190BC1 /* ProfileTVC.swift */; };
+		20FABDB21CF647D100190BC1 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FABDB11CF647D100190BC1 /* ProfileCell.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -44,7 +45,6 @@
 		2002BDCE1CE27C82006C3F72 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2002BDD01CE27E55006C3F72 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2002BDD21CE28093006C3F72 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
-		2002BDD51CE2852D006C3F72 /* profileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = profileVC.swift; sourceTree = "<group>"; };
 		2002BDD71CE28541006C3F72 /* upgradeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = upgradeVC.swift; sourceTree = "<group>"; };
 		2002BDD91CE28564006C3F72 /* ShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
 		2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
@@ -57,6 +57,8 @@
 		2050CC251CEF900A00606A4C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2050CC271CEF955D00606A4C /* FoundRestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundRestVC.swift; sourceTree = "<group>"; };
 		20C978C51CE5472A00F7671B /* RequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestVC.swift; sourceTree = "<group>"; };
+		20FABDAF1CF63FC000190BC1 /* ProfileTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTVC.swift; sourceTree = "<group>"; };
+		20FABDB11CF647D100190BC1 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		6664999BB7FC7C0A30E842F4 /* Pods-GoEat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoEat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoEat/Pods-GoEat.debug.xcconfig"; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 				2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */,
 				2002BDD91CE28564006C3F72 /* ShareVC.swift */,
 				2002BDD71CE28541006C3F72 /* upgradeVC.swift */,
-				2002BDD51CE2852D006C3F72 /* profileVC.swift */,
+				20FABDAF1CF63FC000190BC1 /* ProfileTVC.swift */,
 				2049B1A51CF4D50600950454 /* AfterVC.swift */,
 				2050CC271CEF955D00606A4C /* FoundRestVC.swift */,
 				20C978C51CE5472A00F7671B /* RequestVC.swift */,
@@ -119,6 +121,7 @@
 				2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */,
 				2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */,
 				2050CC251CEF900A00606A4C /* Restaurant.swift */,
+				20FABDB11CF647D100190BC1 /* ProfileCell.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20FABDB01CF63FC000190BC1 /* ProfileTVC.swift in Sources */,
 				20C978C61CE5472A00F7671B /* RequestVC.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */,
@@ -338,8 +342,8 @@
 				2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */,
 				2002BDD11CE27E55006C3F72 /* HomeVC.swift in Sources */,
 				2002BDDA1CE28564006C3F72 /* ShareVC.swift in Sources */,
+				20FABDB21CF647D100190BC1 /* ProfileCell.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
-				2002BDD61CE2852D006C3F72 /* profileVC.swift in Sources */,
 				2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */,
 				2002BDCF1CE27C82006C3F72 /* SWRevealViewController.m in Sources */,
 			);

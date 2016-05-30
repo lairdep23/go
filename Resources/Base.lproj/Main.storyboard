@@ -741,7 +741,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uber Rides Coming Soon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-YQ-h77">
                                         <rect key="frame" x="8" y="8" width="544" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1124,6 +1124,107 @@
             </objects>
             <point key="canvasLocation" x="-2798" y="1612"/>
         </scene>
+        <!--ProfileTVC-->
+        <scene sceneID="pxq-2w-mnA">
+            <objects>
+                <tableViewController id="IRH-Ck-GrL" customClass="ProfileTVC" customModule="GoEat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sa4-hQ-neP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="90" id="xSr-LQ-cxb" customClass="ProfileCell" customModule="GoEat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xSr-LQ-cxb" id="J1V-0b-Kr1">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Name of Restaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="6TS-ih-nZC">
+                                            <rect key="frame" x="8" y="8" width="494" height="24"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                            <color key="textColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7Zr-ca-a57">
+                                            <rect key="frame" x="24" y="33" width="478" height="29"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When you went" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-bV-7LC">
+                                            <rect key="frame" x="24" y="62" width="478" height="19"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5m7-x8-iTS" customClass="MaterialButton" customModule="GoEat" customModuleProvider="target">
+                                            <rect key="frame" x="510" y="8" width="82" height="73"/>
+                                            <color key="backgroundColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="82" id="79m-d0-cv5"/>
+                                                <constraint firstAttribute="width" constant="82" id="UEr-2E-3a7"/>
+                                                <constraint firstAttribute="height" constant="73" id="lAy-5C-9Eu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                            <state key="normal" title="Go Again!">
+                                                <color key="titleColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="UEr-2E-3a7"/>
+                                                    <exclude reference="lAy-5C-9Eu"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="goAgain:" destination="xSr-LQ-cxb" eventType="touchUpInside" id="QcQ-WY-Wv2"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="6TS-ih-nZC" firstAttribute="top" secondItem="J1V-0b-Kr1" secondAttribute="topMargin" id="303-Mn-0Fv"/>
+                                        <constraint firstItem="mKh-bV-7LC" firstAttribute="leading" secondItem="J1V-0b-Kr1" secondAttribute="leadingMargin" constant="16" id="3HV-7C-f7N"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="leading" secondItem="mKh-bV-7LC" secondAttribute="trailing" constant="8" id="9b3-kz-LWE"/>
+                                        <constraint firstItem="7Zr-ca-a57" firstAttribute="leading" secondItem="J1V-0b-Kr1" secondAttribute="leadingMargin" constant="16" id="FGP-8I-caE"/>
+                                        <constraint firstItem="mKh-bV-7LC" firstAttribute="top" secondItem="7Zr-ca-a57" secondAttribute="bottom" id="PDv-ZM-b25"/>
+                                        <constraint firstItem="mKh-bV-7LC" firstAttribute="bottom" secondItem="J1V-0b-Kr1" secondAttribute="bottomMargin" id="Pbz-Jx-h8t"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="leading" secondItem="6TS-ih-nZC" secondAttribute="trailing" constant="8" id="Tz4-ui-eaJ"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="bottom" secondItem="J1V-0b-Kr1" secondAttribute="bottomMargin" id="XVZ-fM-3aH"/>
+                                        <constraint firstItem="7Zr-ca-a57" firstAttribute="top" secondItem="6TS-ih-nZC" secondAttribute="bottom" constant="1" id="neg-BC-FDT"/>
+                                        <constraint firstItem="6TS-ih-nZC" firstAttribute="leading" secondItem="J1V-0b-Kr1" secondAttribute="leadingMargin" id="ryz-WE-oO0"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="top" secondItem="J1V-0b-Kr1" secondAttribute="topMargin" id="sTZ-cK-f1S"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="leading" secondItem="7Zr-ca-a57" secondAttribute="trailing" constant="8" id="tYI-Xo-Xef"/>
+                                        <constraint firstItem="5m7-x8-iTS" firstAttribute="trailing" secondItem="J1V-0b-Kr1" secondAttribute="trailingMargin" id="y72-E1-H9f"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="restLocation" destination="7Zr-ca-a57" id="QUD-7I-7j6"/>
+                                    <outlet property="restName" destination="6TS-ih-nZC" id="ocG-Kv-eFH"/>
+                                    <outlet property="restTime" destination="mKh-bV-7LC" id="Sli-mq-ShI"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IRH-Ck-GrL" id="okS-1b-8oG"/>
+                            <outlet property="delegate" destination="IRH-Ck-GrL" id="CUc-KA-ahf"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="bDU-0z-Gqg">
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="dpF-eD-WPx">
+                            <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="open" destination="dpF-eD-WPx" id="Q1E-FX-ZhI"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Mz-N2-YBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1907" y="18"/>
+        </scene>
         <!--UpgradeVC-->
         <scene sceneID="0w0-yY-6jt">
             <objects>
@@ -1252,8 +1353,8 @@
                                         <state key="normal" image="TwitterLogo_white"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="bnO-aH-fPJ"/>
                                                 <exclude reference="BXE-OR-C1b"/>
+                                                <exclude reference="bnO-aH-fPJ"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -1328,8 +1429,8 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="wOA-5c-fSM"/>
                                                         <exclude reference="DCk-w6-oC3"/>
+                                                        <exclude reference="wOA-5c-fSM"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1377,10 +1478,10 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="nDT-BR-Bde"/>
                                                         <exclude reference="DYL-8Z-4BY"/>
-                                                        <exclude reference="foS-Zq-f21"/>
                                                         <exclude reference="dWc-HZ-pYY"/>
+                                                        <exclude reference="foS-Zq-f21"/>
+                                                        <exclude reference="nDT-BR-Bde"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1413,10 +1514,10 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="u4P-a2-iAN"/>
+                                                        <exclude reference="5Xj-Ha-D8D"/>
                                                         <exclude reference="RKZ-Ed-LwD"/>
                                                         <exclude reference="XlX-wS-T0p"/>
-                                                        <exclude reference="5Xj-Ha-D8D"/>
+                                                        <exclude reference="u4P-a2-iAN"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1433,10 +1534,10 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="esU-qk-0rS"/>
-                                                        <exclude reference="iAb-Vn-rLL"/>
                                                         <exclude reference="0Qb-x6-mlW"/>
                                                         <exclude reference="4fx-NV-VWP"/>
+                                                        <exclude reference="esU-qk-0rS"/>
+                                                        <exclude reference="iAb-Vn-rLL"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1453,10 +1554,10 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="Dc0-1N-TW7"/>
                                                         <exclude reference="cdb-fw-w9F"/>
                                                         <exclude reference="eTu-Go-RYo"/>
                                                         <exclude reference="gAh-Xk-y5C"/>
-                                                        <exclude reference="Dc0-1N-TW7"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1489,8 +1590,8 @@
                                                 </state>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="q7d-RM-j0Q"/>
                                                         <exclude reference="L3N-HQ-R1h"/>
+                                                        <exclude reference="q7d-RM-j0Q"/>
                                                     </mask>
                                                 </variation>
                                                 <connections>
@@ -1587,50 +1688,6 @@
             </objects>
             <point key="canvasLocation" x="-1961" y="3962"/>
         </scene>
-        <!--ProfileVC-->
-        <scene sceneID="9ap-AD-sho">
-            <objects>
-                <viewController id="f6b-X7-e5K" customClass="profileVC" customModule="GoEat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Yul-FY-aax"/>
-                        <viewControllerLayoutGuide type="bottom" id="8zR-zz-BwC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hsn-PG-dNH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Prof" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="My3-2c-iYX">
-                                <rect key="frame" x="82" y="123" width="32" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="1dw-EH-b1v"/>
-                                    <constraint firstAttribute="height" constant="21" id="zMW-ST-Cmk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="My3-2c-iYX" firstAttribute="top" secondItem="Yul-FY-aax" secondAttribute="bottom" constant="59" id="0Ka-0P-jXW"/>
-                            <constraint firstItem="My3-2c-iYX" firstAttribute="leading" secondItem="hsn-PG-dNH" secondAttribute="leadingMargin" constant="60" id="vEA-H3-ISW"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="64u-dq-cHQ">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="vfA-Ct-p1o">
-                            <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="open" destination="vfA-Ct-p1o" id="R8F-3n-6eN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ikV-jd-wVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1925" y="33"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Iu8-nL-S6m">
             <objects>
@@ -1640,7 +1697,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="f6b-X7-e5K" kind="relationship" relationship="rootViewController" id="yTN-Ls-9Lp"/>
+                        <segue destination="IRH-Ck-GrL" kind="relationship" relationship="rootViewController" id="Bfx-vK-DOh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xm9-rc-yvU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1715,9 +1772,9 @@
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="ewi-ec-TTO"/>
                                                         <exclude reference="7WT-Dp-Gub"/>
                                                         <exclude reference="Msd-1I-NU9"/>
+                                                        <exclude reference="ewi-ec-TTO"/>
                                                         <exclude reference="gkO-ey-NNr"/>
                                                     </mask>
                                                 </variation>
@@ -1745,17 +1802,17 @@
                                                     <constraint firstAttribute="height" constant="136" id="9Sg-wg-9VH"/>
                                                     <constraint firstAttribute="height" constant="70" id="GUo-9y-9oD"/>
                                                 </constraints>
-                                                <mutableString key="text">We are the sole owners of the account information collected on this site. We only have access to limited information collected when you log in.
-In order to use this App, a user must first log in with their account, no email required just username and password.  To find a restaurant, you are required to enable Location Services on your mobile device. Only, your end location is stored, along with the selected restaurant name and other restaurant specific data. This information is saved to enhance your future use of the App.</mutableString>
+                                                <string key="text">We are the sole owners of the account information collected on this site. We only have access to limited information collected when you log in.
+In order to use this App, a user must first log in with their account, no email required just username and password.  To find a restaurant, you are required to enable Location Services on your mobile device. Only, your end location is stored, along with the selected restaurant name and other restaurant specific data. This information is saved to enhance your future use of the App.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="9Sg-wg-9VH"/>
                                                         <exclude reference="2Dd-eC-DOI"/>
-                                                        <exclude reference="GUo-9y-9oD"/>
                                                         <exclude reference="7rL-pi-mlT"/>
+                                                        <exclude reference="9Sg-wg-9VH"/>
+                                                        <exclude reference="GUo-9y-9oD"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1777,10 +1834,10 @@ In order to use this App, a user must first log in with their account, no email 
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="7X5-fd-P6b"/>
                                                         <exclude reference="VnS-0l-cHX"/>
                                                         <exclude reference="g8z-wA-qXW"/>
                                                         <exclude reference="pre-M7-XYj"/>
-                                                        <exclude reference="7X5-fd-P6b"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1822,16 +1879,16 @@ In order to use this App, a user must first log in with their account, no email 
                                                     <constraint firstAttribute="height" constant="35" id="cJ6-u6-uSv"/>
                                                     <constraint firstAttribute="height" constant="35" id="wT1-9B-bTN"/>
                                                 </constraints>
-                                                <mutableString key="text">Like many app operators, we use automated data collection tools to collect certain information that your mobile device sends when you use our App, like a device identifier, user settings, and the operating system of your device, as well as information about your use of our App. Some third party services providers that we engage may also track and report information about how and when you interact with our App and information about your mobile device (such as device hardware, operating system, and location). We may use that information to customize and improve our App.</mutableString>
+                                                <string key="text">Like many app operators, we use automated data collection tools to collect certain information that your mobile device sends when you use our App, like a device identifier, user settings, and the operating system of your device, as well as information about your use of our App. Some third party services providers that we engage may also track and report information about how and when you interact with our App and information about your mobile device (such as device hardware, operating system, and location). We may use that information to customize and improve our App.</string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" red="0.90980392160000001" green="0.91764705879999997" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="cJ6-u6-uSv"/>
-                                                        <exclude reference="aa8-vA-Ext"/>
-                                                        <exclude reference="wT1-9B-bTN"/>
                                                         <exclude reference="Tru-Sn-A5i"/>
+                                                        <exclude reference="aa8-vA-Ext"/>
+                                                        <exclude reference="cJ6-u6-uSv"/>
+                                                        <exclude reference="wT1-9B-bTN"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1864,10 +1921,10 @@ In order to use this App, a user must first log in with their account, no email 
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="YwK-TW-Jkz"/>
                                                         <exclude reference="BTc-Fd-1Ua"/>
-                                                        <exclude reference="b8k-H3-YMo"/>
                                                         <exclude reference="T3o-BP-WAK"/>
+                                                        <exclude reference="YwK-TW-Jkz"/>
+                                                        <exclude reference="b8k-H3-YMo"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1900,9 +1957,9 @@ In order to use this App, a user must first log in with their account, no email 
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
+                                                        <exclude reference="1qB-Yh-Xes"/>
                                                         <exclude reference="EZq-vJ-7kS"/>
                                                         <exclude reference="WpW-er-dRU"/>
-                                                        <exclude reference="1qB-Yh-Xes"/>
                                                         <exclude reference="pa2-qX-s2V"/>
                                                     </mask>
                                                 </variation>
@@ -1936,10 +1993,10 @@ In order to use this App, a user must first log in with their account, no email 
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="ycE-7C-xam"/>
+                                                        <exclude reference="9kf-7U-Gdg"/>
                                                         <exclude reference="TjR-cI-fkj"/>
                                                         <exclude reference="WBN-hP-jWg"/>
-                                                        <exclude reference="9kf-7U-Gdg"/>
+                                                        <exclude reference="ycE-7C-xam"/>
                                                     </mask>
                                                 </variation>
                                             </label>
@@ -1973,9 +2030,9 @@ If you feel that we are not abiding by this privacy policy, email us using the b
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
-                                                        <exclude reference="eAN-Xx-2JP"/>
-                                                        <exclude reference="TiE-cH-J86"/>
                                                         <exclude reference="QJU-Tr-nxv"/>
+                                                        <exclude reference="TiE-cH-J86"/>
+                                                        <exclude reference="eAN-Xx-2JP"/>
                                                         <exclude reference="uyL-8r-Akc"/>
                                                     </mask>
                                                 </variation>
