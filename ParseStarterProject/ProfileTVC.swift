@@ -30,7 +30,15 @@ class ProfileTVC: PFQueryTableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.149, green: 0.776, blue: 0.855, alpha: 1.00)
         
         tableView.estimatedRowHeight = 90
+        
     
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        webUrls.removeAll()
+        
     }
     
     override init(style: UITableViewStyle, className: String?) {
@@ -47,6 +55,7 @@ class ProfileTVC: PFQueryTableViewController {
         parseClassName = "savedRests"
         pullToRefreshEnabled = true
         paginationEnabled = true
+    
     }
     
     override func queryForTable() -> PFQuery {
@@ -62,6 +71,7 @@ class ProfileTVC: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> ProfileCell? {
+        
         
         let cellIdentifier = "cell"
         
