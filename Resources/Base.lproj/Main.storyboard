@@ -208,9 +208,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Cb0-Oi-Mng" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="UdK-Vr-kwC"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Share with Friends" rowHeight="60" id="btW-5S-nKM">
                                 <rect key="frame" x="0.0" y="268" width="600" height="60"/>
@@ -1061,22 +1058,6 @@
             <point key="canvasLocation" x="62" y="-698"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="qNU-L4-sPv">
-            <objects>
-                <navigationController id="Cb0-Oi-Mng" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fum-Nz-kel">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="PwH-Gs-Ig5" kind="relationship" relationship="rootViewController" id="yuX-ks-Oqk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3yj-ji-u2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2830" y="785"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="c2k-6J-Vdt">
             <objects>
                 <navigationController id="Zi2-lt-JZv" sceneMemberID="viewController">
@@ -1224,48 +1205,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Mz-N2-YBN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1907" y="18"/>
-        </scene>
-        <!--UpgradeVC-->
-        <scene sceneID="0w0-yY-6jt">
-            <objects>
-                <viewController id="PwH-Gs-Ig5" customClass="upgradeVC" customModule="GoEat" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QPn-1J-v2a"/>
-                        <viewControllerLayoutGuide type="bottom" id="bXw-kf-Mff"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lvw-ZL-kbL">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="UP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYf-yW-yef">
-                                <rect key="frame" x="169" y="135" width="23" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="Abs-fS-Hgf"/>
-                                    <constraint firstAttribute="height" constant="21" id="aIQ-yD-7dT"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UYf-yW-yef" firstAttribute="leading" secondItem="Lvw-ZL-kbL" secondAttribute="leadingMargin" constant="138" id="DrI-36-BxH"/>
-                            <constraint firstItem="UYf-yW-yef" firstAttribute="top" secondItem="QPn-1J-v2a" secondAttribute="bottom" constant="71" id="UQa-4d-Vtw"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Ki1-z2-WNS">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="jsG-54-AFX">
-                            <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="open" destination="jsG-54-AFX" id="Xwr-x4-nZ4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9wB-07-9W5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1925" y="793"/>
         </scene>
         <!--ShareVC-->
         <scene sceneID="GSa-RZ-MVr">

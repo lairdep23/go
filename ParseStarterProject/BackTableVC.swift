@@ -67,6 +67,8 @@ class BackTableVC: UITableViewController {
             
             self.displayLogOutAlert("Are You Sure?", message: "All requests will be canceled if you log out.")
             
+        } else if tableArray[indexPath.row] == "Upgrade to Premium" {
+            self.displayUpgradeAlert("Upgrade to Premium!", message: "Enjoy awesome benefits such as keywords, your profile, and much more!")
         }
     }
     
@@ -131,6 +133,29 @@ class BackTableVC: UITableViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
             
             self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func displayUpgradeAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Upgrade!", style: .Default, handler: { (action) in
+            
+            let url = "http://blindersapp.com"
+            
+            if let NSUrl = NSURL(string: url) {
+                
+                UIApplication.sharedApplication().openURL(NSUrl)
+            }
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
             
         }))
         

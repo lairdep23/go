@@ -12,7 +12,6 @@
 		2002BDCF1CE27C82006C3F72 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDCE1CE27C82006C3F72 /* SWRevealViewController.m */; };
 		2002BDD11CE27E55006C3F72 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD01CE27E55006C3F72 /* HomeVC.swift */; };
 		2002BDD31CE28093006C3F72 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD21CE28093006C3F72 /* BackTableVC.swift */; };
-		2002BDD81CE28541006C3F72 /* upgradeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD71CE28541006C3F72 /* upgradeVC.swift */; };
 		2002BDDA1CE28564006C3F72 /* ShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDD91CE28564006C3F72 /* ShareVC.swift */; };
 		2002BDDC1CE285C7006C3F72 /* PrivacyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */; };
 		2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDDD1CE285E3006C3F72 /* SupportVC.swift */; };
@@ -45,7 +44,6 @@
 		2002BDCE1CE27C82006C3F72 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		2002BDD01CE27E55006C3F72 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2002BDD21CE28093006C3F72 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
-		2002BDD71CE28541006C3F72 /* upgradeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = upgradeVC.swift; sourceTree = "<group>"; };
 		2002BDD91CE28564006C3F72 /* ShareVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareVC.swift; sourceTree = "<group>"; };
 		2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyVC.swift; sourceTree = "<group>"; };
 		2002BDDD1CE285E3006C3F72 /* SupportVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportVC.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 				2002BDDD1CE285E3006C3F72 /* SupportVC.swift */,
 				2002BDDB1CE285C7006C3F72 /* PrivacyVC.swift */,
 				2002BDD91CE28564006C3F72 /* ShareVC.swift */,
-				2002BDD71CE28541006C3F72 /* upgradeVC.swift */,
 				20FABDAF1CF63FC000190BC1 /* ProfileTVC.swift */,
 				2049B1A51CF4D50600950454 /* AfterVC.swift */,
 				2050CC271CEF955D00606A4C /* FoundRestVC.swift */,
@@ -332,7 +329,6 @@
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */,
 				2049B1A61CF4D50600950454 /* AfterVC.swift in Sources */,
-				2002BDD81CE28541006C3F72 /* upgradeVC.swift in Sources */,
 				2050CC261CEF900A00606A4C /* Restaurant.swift in Sources */,
 				2002BDDE1CE285E3006C3F72 /* SupportVC.swift in Sources */,
 				201174831CED4AAA00E70BDF /* Constants.swift in Sources */,
