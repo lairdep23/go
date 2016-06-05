@@ -106,7 +106,11 @@ class BackTableVC: UITableViewController {
             
                                 }
                             }
-                        }
+                    } else {
+                        PFUser.logOut()
+                        self.performSegueWithIdentifier("logOutSegue", sender: self)
+                        
+                    }
                     }
                     }
                 } 

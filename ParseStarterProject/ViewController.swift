@@ -19,6 +19,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var howItWorksView: MaterialView!
+    
+    @IBOutlet weak var howItWorksLabel: UILabel!
+    
+    @IBOutlet weak var nextBut: UIBarButtonItem!
+    
+    @IBOutlet weak var backBut: UIBarButtonItem!
+    
+    
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLoad() {
@@ -29,6 +39,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        howItWorksView.hidden = true
         
     }
     
@@ -121,6 +133,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         
+        howItWorksView.hidden = true
+        
         if PFUser.currentUser()?.username != nil {
             
             self.performSegueWithIdentifier("loginSegue", sender: self)
@@ -132,9 +146,62 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 
     @IBAction func howItWorksButton(sender: AnyObject) {
-        //create how it works button
+        
+        howItWorksView.hidden = false
+        
+        howItWorksLabel.text = "Sign up with a username and password, no email required!"
+        nextBut.title = "Next"
+        backBut.title = ""
         
     }
+    
+    
+    @IBAction func nextButton(sender: AnyObject) {
+        
+        if howItWorksLabel.text == "Sign up with a username and password, no email required!" {
+            backBut.title = "Back"
+            howItWorksLabel.text = "Confirm your location and set your distance willing to travel to the restaurant."
+        } else if howItWorksLabel.text == "Confirm your location and set your distance willing to travel to the restaurant." {
+            howItWorksLabel.text = "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare."
+        } else if howItWorksLabel.text == "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare." {
+            howItWorksLabel.text = "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!"
+        } else if howItWorksLabel.text == "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!" {
+            nextBut.title = ""
+            howItWorksLabel.text = "The catch? \n \n The restaurant isn't revealed until you arrive!"
+        }
+        
+    }
+    
+    
+    @IBAction func backButton(sender: AnyObject) {
+        
+        if howItWorksLabel.text == "Confirm your location and set your distance willing to travel to the restaurant." {
+            
+            howItWorksLabel.text = "Sign up with a username and password, no email required!"
+            backBut.title = ""
+            nextBut.title = "Next"
+            
+        } else if howItWorksLabel.text == "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare." {
+            
+            howItWorksLabel.text = "Confirm your location and set your distance willing to travel to the restaurant."
+            
+        } else if howItWorksLabel.text == "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!" {
+            
+            howItWorksLabel.text = "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare."
+            
+        } else if howItWorksLabel.text == "The catch? \n \n The restaurant isn't revealed until you arrive!" {
+            
+            howItWorksLabel.text = "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!"
+        }
+        
+        
+    }
+    
+    
+    @IBAction func exitButton(sender: AnyObject) {
+        howItWorksView.hidden = true
+    }
+    
 
 
     func displayAlert(title: String, message: String) {

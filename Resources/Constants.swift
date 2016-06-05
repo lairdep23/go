@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import UIKit
 
 let URL_BASE = "https://api.foursquare.com/v2/venues/explore?&client_id=B0YPNYWYTTKKQ0UU1WQP0WRYCVQW4HAEZJ3RZICUTT0BWIWC&client_secret=IXQJXYVKQ5A0FXYCPNBINBA0URYZEJXWMOLIHEPMN1YN2PXP&limit=1&v=20160518&openNow=1"
 
@@ -18,4 +19,5 @@ var restaurant: Restaurant!
 
 
 
-typealias DownloadComplete = () -> Void 
+typealias DownloadComplete = () -> Void
+
