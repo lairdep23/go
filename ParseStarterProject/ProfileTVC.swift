@@ -15,6 +15,7 @@ class ProfileTVC: PFQueryTableViewController {
     @IBOutlet weak var open: UIBarButtonItem!
     
     var webUrls = [String]()
+    var fourUrls = [String]()
     
 
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class ProfileTVC: PFQueryTableViewController {
         super.viewDidAppear(true)
         
         webUrls.removeAll()
+        fourUrls.removeAll()
         
     }
     
@@ -86,8 +88,11 @@ class ProfileTVC: PFQueryTableViewController {
             cell?.restName.text = object["restName"] as? String
             cell?.restLocation.text = object["restLocation"] as? String
             cell?.restWebUrl = (object["restWebUrl"] as? String)!
+            cell?.restFourUrl = object["fourUrl"] as! String
+            
             
             webUrls.append((cell?.restWebUrl)!)
+            fourUrls.append((cell?.restFourUrl)!)
             
             
             
@@ -106,6 +111,7 @@ class ProfileTVC: PFQueryTableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let url = webUrls[indexPath.row]
+        let fourUrl = fourUrls[indexPath.row]
         
         if url != "" {
             
@@ -113,6 +119,10 @@ class ProfileTVC: PFQueryTableViewController {
                 UIApplication.sharedApplication().openURL(NSUrl)
             }
             
+        } else if url == "" {
+            if let NSurl = NSURL(string: fourUrl) {
+                UIApplication.sharedApplication().openURL(NSurl)
+            }
         }
         
         

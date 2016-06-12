@@ -245,7 +245,7 @@ class RequestVC: UIViewController, UITextFieldDelegate {
             
             url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
         } else {
-            url = URL_BASE + "&section=food" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
+            url = URL_BASE + "&section=food" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=restaurant"
         }
         
         restaurant = Restaurant(url: url)

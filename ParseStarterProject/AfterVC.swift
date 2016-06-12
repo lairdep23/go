@@ -39,6 +39,7 @@ class AfterVC: UIViewController {
         savedRests["restName"] = restaurant.name
         savedRests["restLocation"] = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
         savedRests["restWebUrl"] = restaurant.websiteUrl
+        savedRests["fourUrl"] = restaurant.fourUrl
         savedRests.saveInBackgroundWithBlock { (success, error) in
             
             if success {
@@ -60,8 +61,11 @@ class AfterVC: UIViewController {
             if let url = NSURL(string: "\(restaurant.websiteUrl)") {
                 UIApplication.sharedApplication().openURL(url)
             }
-        } else {
+        } else if restaurant.websiteUrl == "" {
             
+            if let fourUrl = NSURL(string: "\(restaurant.fourUrl)") {
+                UIApplication.sharedApplication().openURL(fourUrl)
+            }
         }
     }
     

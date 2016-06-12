@@ -19,6 +19,7 @@ class Restaurant {
     private var _state: String!
     private var _distance: Int!
     private var _websiteUrl: String!
+    private var _fourUrl: String!
     private var _phoneNumber: String!
     var couldntFind = false
     
@@ -95,6 +96,13 @@ class Restaurant {
         return _phoneNumber
     }
     
+    var fourUrl: String {
+        if _fourUrl == nil {
+            _fourUrl = ""
+        }
+        return _fourUrl
+    }
+    
     init(url: String) {
         self._url = url 
     }
@@ -128,6 +136,20 @@ class Restaurant {
                                     if let itemsArrayDict = arrayDict["items"] as? [Dictionary<String, AnyObject>] {
                                         
                                         if let itemsDict = itemsArrayDict[0] as? Dictionary<String, AnyObject> {
+                                            
+                                            if let tipsArray = itemsDict["tips"] as? [Dictionary<String, AnyObject>] {
+                                                
+                                                if let tipsDict = tipsArray[0] as? Dictionary<String, AnyObject> {
+                                                    
+                                                    if let squareUrl = tipsDict["canonicalUrl"] as? String {
+                                                        
+                                                        self._fourUrl = squareUrl
+                                                        print(self._fourUrl)
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
                                             
                                             if let venueDict = itemsDict["venue"] as? Dictionary<String, AnyObject> {
                                                 
@@ -178,8 +200,6 @@ class Restaurant {
                                                 if let webUrl = venueDict["url"] as? String {
                                                     self._websiteUrl = webUrl
                                                 }
-                                                
-                                                //print(self._websiteUrl)
                                                 
                                             }
                                             

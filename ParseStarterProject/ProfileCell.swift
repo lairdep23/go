@@ -23,6 +23,7 @@ class ProfileCell: PFTableViewCell {
     @IBOutlet weak var restTime: UILabel!
     
     var restWebUrl = ""
+    var restFourUrl = ""
     
     
 
