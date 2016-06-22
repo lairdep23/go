@@ -4,3 +4,4 @@
 
 #import "SWRevealViewController.h"
 #import "ParseUI/ParseUI.h"
+#import <Google/Analytics.h>

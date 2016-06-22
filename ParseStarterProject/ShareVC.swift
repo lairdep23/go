@@ -26,6 +26,16 @@ class ShareVC: UIViewController {
         self.navigationItem.titleView = imageView
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "ShareVC Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
 
     @IBAction func facebookPost(sender: AnyObject) {
         

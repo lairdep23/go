@@ -43,6 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         howItWorksView.hidden = true
         
     }
+
     
     func dismissKeyboard() {
         view.endEditing(true)
@@ -141,6 +142,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
            // print("already logged in")
         }
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "Login Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
 
 

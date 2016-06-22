@@ -67,6 +67,16 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "HomeVC Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }

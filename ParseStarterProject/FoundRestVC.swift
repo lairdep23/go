@@ -57,6 +57,16 @@ class FoundRestVC: UIViewController {
         self.navigationItem.titleView = imageView
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "FoundRestVC Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
     func updateUI() {
         
         self.activityIndicator.stopAnimating()

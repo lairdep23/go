@@ -34,7 +34,7 @@ class SupportVC: UIViewController, MFMailComposeViewControllerDelegate {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
-            mail.setToRecipients(["support@GoEat.com"])
+            mail.setToRecipients(["GoEatiOSApp@gmail.com"])
             
             presentViewController(mail, animated: true, completion: nil)
             
@@ -60,6 +60,16 @@ class SupportVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         presentViewController(alert, animated: true, completion: nil)
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: "SupportVC Screen")
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
     }
     
 
