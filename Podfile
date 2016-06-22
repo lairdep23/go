@@ -6,6 +6,7 @@ use_frameworks!
 target 'GoEat' do
 pod ‘Alamofire’, ‘~> 3.4’
 pod ‘ParseUI’
+pod 'Google/Analytics'
 
 end
 

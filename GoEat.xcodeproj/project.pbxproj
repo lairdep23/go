@@ -19,6 +19,7 @@
 		2002BDF41CE2DF8B006C3F72 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */; };
 		2002BDF51CE2DF8B006C3F72 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */; };
 		201174831CED4AAA00E70BDF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201174821CED4AAA00E70BDF /* Constants.swift */; };
+		201DC5B71D1A1E52006B43BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 201DC5B61D1A1E52006B43BB /* GoogleService-Info.plist */; };
 		2049B1A61CF4D50600950454 /* AfterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2049B1A51CF4D50600950454 /* AfterVC.swift */; };
 		2050CC261CEF900A00606A4C /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC251CEF900A00606A4C /* Restaurant.swift */; };
 		2050CC281CEF955D00606A4C /* FoundRestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2050CC271CEF955D00606A4C /* FoundRestVC.swift */; };
@@ -51,6 +52,7 @@
 		2002BDF11CE2DF8B006C3F72 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		2002BDF21CE2DF8B006C3F72 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		201174821CED4AAA00E70BDF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		201DC5B61D1A1E52006B43BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2049B1A51CF4D50600950454 /* AfterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterVC.swift; sourceTree = "<group>"; };
 		2050CC251CEF900A00606A4C /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		2050CC271CEF955D00606A4C /* FoundRestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundRestVC.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				2002BDCE1CE27C82006C3F72 /* SWRevealViewController.m */,
 				814C3AC81B69877600E307BB /* Images.xcassets */,
 				814C3AC91B69877600E307BB /* Info.plist */,
+				201DC5B61D1A1E52006B43BB /* GoogleService-Info.plist */,
 				2002BDCC1CE27C82006C3F72 /* GoEat-Bridging-Header.h */,
 				201174821CED4AAA00E70BDF /* Constants.swift */,
 			);
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2002BDCB1CE260EA006C3F72 /* Launch Screen.storyboard in Resources */,
+				201DC5B71D1A1E52006B43BB /* GoogleService-Info.plist in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 			);
@@ -454,7 +458,7 @@
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoEatiOSApp;
 				PRODUCT_NAME = GoEat;
 				SWIFT_OBJC_BRIDGING_HEADER = "Resources/GoEat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -475,7 +479,7 @@
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoEatiOSApp;
 				PRODUCT_NAME = GoEat;
 				SWIFT_OBJC_BRIDGING_HEADER = "Resources/GoEat-Bridging-Header.h";
 			};
