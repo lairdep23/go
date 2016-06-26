@@ -7,6 +7,7 @@ target 'GoEat' do
 pod ‘Alamofire’, ‘~> 3.4’
 pod ‘ParseUI’
 pod 'Google/Analytics'
+pod 'UberRides'
 
 end
 

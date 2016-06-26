@@ -86,12 +86,16 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-GoEat/Alamofire.framework"
   install_framework "Pods-GoEat/Bolts.framework"
+  install_framework "Pods-GoEat/ObjectMapper.framework"
   install_framework "Pods-GoEat/Parse.framework"
   install_framework "Pods-GoEat/ParseUI.framework"
+  install_framework "Pods-GoEat/UberRides.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-GoEat/Alamofire.framework"
   install_framework "Pods-GoEat/Bolts.framework"
+  install_framework "Pods-GoEat/ObjectMapper.framework"
   install_framework "Pods-GoEat/Parse.framework"
   install_framework "Pods-GoEat/ParseUI.framework"
+  install_framework "Pods-GoEat/UberRides.framework"
 fi
