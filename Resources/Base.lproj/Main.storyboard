@@ -512,7 +512,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8ce-co-TQo">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="zM7-wH-gSJ">
+                        <barButtonItem key="leftBarButtonItem" image="menubutton" id="zM7-wH-gSJ">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Restart" id="3vb-Gd-pCX">
@@ -1270,7 +1270,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="bDU-0z-Gqg">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="dpF-eD-WPx">
+                        <barButtonItem key="leftBarButtonItem" image="menubutton" id="dpF-eD-WPx">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -1402,7 +1402,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0gf-Ka-1mz">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="yst-mO-O4a">
+                        <barButtonItem key="leftBarButtonItem" image="menubutton" id="yst-mO-O4a">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -1688,7 +1688,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="BAq-Eg-ygC">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="cKh-lD-NOj">
+                        <barButtonItem key="leftBarButtonItem" image="menubutton" id="cKh-lD-NOj">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -2073,6 +2073,7 @@ If you feel that we are not abiding by this privacy policy, email us using the b
                                                 <connections>
                                                     <action selector="callRest:" destination="2pj-2E-5TH" eventType="touchUpInside" id="UDd-Cy-U9T"/>
                                                     <action selector="emailButton:" destination="IT8-Y9-pN4" eventType="touchUpInside" id="XPs-aQ-ggT"/>
+                                                    <action selector="emailUsButton:" destination="1c8-Iz-kMn" eventType="touchUpInside" id="twT-a7-cuR"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -2173,7 +2174,7 @@ If you feel that we are not abiding by this privacy policy, email us using the b
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="wUb-DB-yY8">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" id="lQu-gN-24e">
+                        <barButtonItem key="leftBarButtonItem" image="menubutton" id="lQu-gN-24e">
                             <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -2195,6 +2196,7 @@ If you feel that we are not abiding by this privacy policy, email us using the b
         <image name="TwitterLogo_white" width="1687" height="1687"/>
         <image name="foodImage2" width="2459" height="3673"/>
         <image name="logo" width="399" height="157"/>
+        <image name="menubutton" width="29" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="luE-Pt-d3j"/>

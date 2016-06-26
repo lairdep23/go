@@ -41,7 +41,7 @@ class ShareVC: UIViewController {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
             let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            facebookSheet.setInitialText("Share on Facebook")
+            facebookSheet.setInitialText("@GoEatiOSApp is awesome! Everyone check it out! www.GoEatiOSApp.com")
             self.presentViewController(facebookSheet, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -54,7 +54,7 @@ class ShareVC: UIViewController {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText("Share on Twitter")
+            twitterSheet.setInitialText("@GoEatiOSApp is awesome! Everyone check it out! www.GoEatiOSApp.com")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
