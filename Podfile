@@ -8,6 +8,7 @@ pod ‘Alamofire’, ‘~> 3.4’
 pod ‘ParseUI’
 pod 'Google/Analytics'
 pod 'UberRides'
+pod 'Branch'
 
 end
 

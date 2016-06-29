@@ -10,6 +10,7 @@
 import UIKit
 
 import Parse
+import Branch
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -27,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
+        
+        let branch: Branch = Branch.getInstance()
+        branch.initSessionWithLaunchOptions(launchOptions) { (params: [NSObject : AnyObject]!, error: NSError!) in
+            
+            // params are the deep linked params associated with the link that the user clicked before showing up.
+            NSLog("deep link data: %@", params.description)
+        }
+        
+     
+        
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
@@ -153,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //         PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
     //     }
     // }
-
+    
     //--------------------------------------
     // MARK: Facebook SDK Integration
     //--------------------------------------
@@ -161,7 +172,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///////////////////////////////////////////////////////////
     // Uncomment this method if you are using Facebook
     ///////////////////////////////////////////////////////////
-    // func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-    //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-    // }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
+        
+        return Branch.getInstance().handleDeepLink(url)
+    }
+    
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        
+        return Branch.getInstance().continueUserActivity(userActivity)
+    }
+
 }
