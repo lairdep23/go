@@ -22,8 +22,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImage2" translatesAutoresizingMaskIntoConstraints="NO" id="q9U-kq-0dM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-BW-L7y" customClass="MaterialView" customModule="GoEat" customModuleProvider="target">
-                                <rect key="frame" x="55" y="137" width="480" height="250"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-BW-L7y" customClass="MaterialView" customModule="GoEat" customModuleProvider="target">
+                                <rect key="frame" x="60" y="175" width="480" height="250"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkY-xw-p0H">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>

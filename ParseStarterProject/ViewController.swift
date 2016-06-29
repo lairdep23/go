@@ -37,7 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         username.delegate = self
         password.delegate = self
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         howItWorksView.hidden = true

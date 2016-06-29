@@ -17,7 +17,7 @@ class PrivacyVC: UIViewController, MFMailComposeViewControllerDelegate {
         super.viewDidLoad()
 
         open.target = self.revealViewController()
-        open.action = Selector("revealToggle:")
+        open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         

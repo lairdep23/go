@@ -39,7 +39,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         super.viewDidLoad()
         
         open.target = self.revealViewController()
-        open.action = Selector("revealToggle:")
+        open.action = #selector(SWRevealViewController.revealToggle(_:))
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
@@ -58,7 +58,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         distanceTextField.delegate = self
         
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         let logo = UIImage(named: "logoSmall")
