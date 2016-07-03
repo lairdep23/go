@@ -9,12 +9,20 @@
 import UIKit
 import Parse
 import MapKit
+import UberRides
 
 class FoundRestVC: UIViewController {
 
     @IBOutlet weak var favRestLabel: UILabel!
     
+    @IBOutlet weak var uberView: MaterialView!
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    var dropOff_Lat = CLLocationCoordinate2D().latitude
+    var dropOff_Long = CLLocationCoordinate2D().longitude
+    
+    var uiUpdated = false
     
     
     override func viewDidLoad() {
@@ -38,6 +46,7 @@ class FoundRestVC: UIViewController {
             if restaurant.couldntFind == false {
                 
                 self.updateUI()
+                self.addUberButton()
                 
             } else {
                 
@@ -65,6 +74,19 @@ class FoundRestVC: UIViewController {
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if userDefaults.boolForKey("premiumUser") {
+           // upgradeLabel.hidden = true
+           // upgradeView.hidden = true
+            
+        } else {
+           // upgradeLabel.hidden = false
+           // upgradeLabel.hidden = false
+        }
+        
+        
     }
     
     func updateUI() {
@@ -79,13 +101,59 @@ class FoundRestVC: UIViewController {
             
             favRestLabel.text = "Your new favorite restaurant is only \(roundedDistance) miles away, so what are you waiting for and..."
             
+            
         } else {
+            
+            self.uiUpdated = false
             
             restaurant.couldntFind = false 
             
             displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
         }
         
+    }
+    
+    func addUberButton() {
+        
+        if  restaurant.couldntFind == false {
+        
+        let address = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address){(placemarks, error) in
+            if let placemark = placemarks![0] as? CLPlacemark {
+                
+                let location = placemark.location
+                self.dropOff_Lat = (location?.coordinate.latitude)!
+                self.dropOff_Long = (location?.coordinate.longitude)!
+                
+                self.uiUpdated = true
+                
+            } else {
+                print("Couldn't convert to CLLocation")
+                
+                self.uiUpdated = false
+            }
+            
+        }
+            
+            let behavior = RideRequestViewRequestingBehavior(presentingViewController: self)
+            let builder = RideParametersBuilder()
+            let pickupLocation = CLLocation(latitude: Double(USER_LAT)!, longitude: Double(USER_LONG)!)
+            let dropoffLocation = CLLocation(latitude: self.dropOff_Lat, longitude: self.dropOff_Long)
+            builder.setPickupLocation(pickupLocation)
+            builder.setDropoffLocation(dropoffLocation, nickname: "New Favorite Restaurant", address: address)
+            let rideParameters = builder.build()
+            let button = RideRequestButton(rideParameters: rideParameters, requestingBehavior: behavior)
+            button.colorStyle = .White
+            
+            self.uberView.addSubview(button)
+            self.uberView.bringSubviewToFront(button)
+            
+            
+            button.center.x = uberView.center.x
+            
+        }
     }
 
     @IBAction func getDirections(sender: AnyObject) {

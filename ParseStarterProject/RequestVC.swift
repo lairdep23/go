@@ -23,6 +23,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var keyword: UITextField!
     
+    @IBOutlet weak var upgradeLabel: UILabel!
+    
+    @IBOutlet weak var upgradeView: MaterialView!
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -74,6 +77,19 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if userDefaults.boolForKey("premiumUser") {
+            
+            upgradeView.hidden = true
+            upgradeLabel.hidden = true 
+            
+        } else {
+            upgradeView.hidden = false
+            upgradeLabel.hidden = false 
+        }
     }
     
     func dismissKeyboard() {

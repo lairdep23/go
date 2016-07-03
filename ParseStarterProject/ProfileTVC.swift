@@ -46,6 +46,22 @@ class ProfileTVC: PFQueryTableViewController {
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if userDefaults.boolForKey("premiumUser") == false {
+            
+            self.displayUpgradeAlert("Must upgrade to premium to view your history!", message: "Enjoy awesome benefits such as keywords, your profile, UberRides coming soon, and much more!")
+            
+            self.tableView.hidden = true
+        } else {
+            
+            self.tableView.hidden = false
+        }
+        
+        
+        
+        
     }
     
     override init(style: UITableViewStyle, className: String?) {
@@ -133,7 +149,61 @@ class ProfileTVC: PFQueryTableViewController {
         
     }
     
+    func displayUpgradeAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Upgrade!", style: .Default, handler: { (action) in
+            
+            
+            
+            self.displayBuyAlert("Confirm your In-App Purchase", message: "Do you want to buy one year of awesome GoEat Premium for $2.99?")
+            
+            
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
+    func displayBuyAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Buy!", style: .Default, handler: { (action) in
+            
+            PFPurchase.buyProduct("GoEatPremium248915248915", block: { (error) in
+                if error != nil {
+                    self.displayAlert("Could not process purchase:(", message: error.debugDescription)
+                }
+            })
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func displayAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
 
     
 

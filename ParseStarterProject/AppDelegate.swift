@@ -8,9 +8,10 @@
 */
 
 import UIKit
-
+import UberRides
 import Parse
 import Branch
+
 
 // If you want to use any of the UI components, uncomment this line
 // import ParseUI
@@ -36,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("deep link data: %@", params.description)
         }
         
-     
-        
+        Configuration.setSandboxEnabled(true)
+        RidesAppDelegate.sharedInstance.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Configure tracker from GoogleService-Info.plist.
         var configureError:NSError?
@@ -92,7 +93,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
                 PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
             }
+            
+            
+            
+            
         }
+        
+        PFPurchase.addObserverForProduct("GoEatPremium248915248915", block: { (transaction: SKPaymentTransaction) in
+            
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            
+            userDefaults.setBool(true, forKey: "premiumUser")
+            
+            userDefaults.synchronize()
+        })
 
         //
         //  Swift 1.2
@@ -173,14 +187,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Uncomment this method if you are using Facebook
     ///////////////////////////////////////////////////////////
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
         
-        return Branch.getInstance().handleDeepLink(url)
+        Branch.getInstance().handleDeepLink(url)
+        
+        //     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
+        let handledURL = RidesAppDelegate.sharedInstance.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        if (!handledURL) {
+            
+        }
+        
+        
+        return true
     }
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
         
         return Branch.getInstance().continueUserActivity(userActivity)
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        let handledURL = RidesAppDelegate.sharedInstance.application(app, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+        if (!handledURL) {
+            
+        }
+        
+        return true
+    }
+    
+    
 
 }

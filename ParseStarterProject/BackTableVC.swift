@@ -154,18 +154,46 @@ class BackTableVC: UITableViewController {
         
     }
     
+    func displayBuyAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Buy!", style: .Default, handler: { (action) in
+            
+            dispatch_after(UInt64(0.2), dispatch_get_main_queue(), {
+                
+                PFPurchase.buyProduct("GoEatPremium248915248915", block: { (error: NSError?) in
+                    if error == nil {
+                        print("purchase worked")
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    } else {
+                        print(error.debugDescription)
+                        print(error)
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    }
+                })
+                
+            })
+            
+            
+            
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action:UIAlertAction) in
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func displayUpgradeAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Upgrade!", style: .Default, handler: { (action) in
             
-            let url = "http://blindersapp.com"
+            self.displayBuyAlert("Confirm your In-App Purchase", message: "Do you want to buy one year of awesome GoEat Premium for $2.99?")
             
-            if let NSUrl = NSURL(string: url) {
-                
-                UIApplication.sharedApplication().openURL(NSUrl)
-            }
-            self.dismissViewControllerAnimated(true, completion: nil)
+            
             
         }))
         
