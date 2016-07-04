@@ -15,7 +15,6 @@ class FoundRestVC: UIViewController {
 
     @IBOutlet weak var favRestLabel: UILabel!
     
-    @IBOutlet weak var uberView: MaterialView!
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -23,6 +22,8 @@ class FoundRestVC: UIViewController {
     var dropOff_Long = CLLocationCoordinate2D().longitude
     
     var uiUpdated = false
+    
+    lazy var rideRequestButton = RideRequestButton()
     
     
     override func viewDidLoad() {
@@ -46,7 +47,36 @@ class FoundRestVC: UIViewController {
             if restaurant.couldntFind == false {
                 
                 self.updateUI()
-                self.addUberButton()
+                
+                let address = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
+                
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(address){(placemarks, error) in
+                    if let placemark = placemarks![0] as? CLPlacemark {
+                        
+                        let location = placemark.location
+                        self.dropOff_Lat = (location?.coordinate.latitude)!
+                        self.dropOff_Long = (location?.coordinate.longitude)!
+                        
+                        self.uiUpdated = true
+                        
+                        self.rideRequestButton.rideParameters = self.buildRideParameters()
+                        self.rideRequestButton.requestBehavior = self.buildRequestBehavior()
+                        
+                        self.view.addSubview(self.rideRequestButton)
+                        self.addRequestButtonConstraint()
+                        self.rideRequestButton.colorStyle = .White
+                        
+                        
+                    } else {
+                        print("Couldn't convert to CLLocation")
+                        
+                        self.uiUpdated = false
+                    }
+                    
+                }
+                
+                
                 
             } else {
                 
@@ -113,7 +143,40 @@ class FoundRestVC: UIViewController {
         
     }
     
-    func addUberButton() {
+    func buildRideParameters() -> RideParameters {
+        
+        let address = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
+        
+        let builder = RideParametersBuilder()
+        
+        let pickupLocation = CLLocation(latitude: Double(USER_LAT)!, longitude: Double(USER_LONG)!)
+        builder.setPickupLocation(pickupLocation)
+        let dropoffLocation = CLLocation(latitude: self.dropOff_Lat, longitude: self.dropOff_Long)
+        print(self.dropOff_Lat)
+        print(self.dropOff_Long)
+        builder.setDropoffLocation(dropoffLocation, nickname: "New Favorite Restaurant", address: address)
+        
+        return builder.build()
+        
+    }
+    
+    func buildRequestBehavior() -> RideRequesting {
+        let requestBehavior = RideRequestViewRequestingBehavior(presentingViewController: self)
+        return requestBehavior
+    }
+    
+    func addRequestButtonConstraint() {
+        
+        rideRequestButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let CenterX = NSLayoutConstraint(item: rideRequestButton, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
+        let bottom = NSLayoutConstraint(item: rideRequestButton, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: -20.0)
+        let width = NSLayoutConstraint(item: rideRequestButton, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1.0, constant: -30.0)
+        view.addConstraints([CenterX, bottom, width])
+    
+    }
+    
+  /*  func addUberButton() {
         
         if  restaurant.couldntFind == false {
         
@@ -141,8 +204,7 @@ class FoundRestVC: UIViewController {
             let builder = RideParametersBuilder()
             let pickupLocation = CLLocation(latitude: Double(USER_LAT)!, longitude: Double(USER_LONG)!)
             let dropoffLocation = CLLocation(latitude: self.dropOff_Lat, longitude: self.dropOff_Long)
-            builder.setPickupLocation(pickupLocation)
-            builder.setDropoffLocation(dropoffLocation, nickname: "New Favorite Restaurant", address: address)
+            builder.setPickupLocation(pickupLocation).setDropoffLocation(dropoffLocation, nickname: "New Favorite Restaurant", address: address)
             let rideParameters = builder.build()
             let button = RideRequestButton(rideParameters: rideParameters, requestingBehavior: behavior)
             button.colorStyle = .White
@@ -154,7 +216,7 @@ class FoundRestVC: UIViewController {
             button.center.x = uberView.center.x
             
         }
-    }
+    }*/
 
     @IBAction func getDirections(sender: AnyObject) {
         

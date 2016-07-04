@@ -47,7 +47,7 @@ class ProfileTVC: PFQueryTableViewController {
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        /*let userDefaults = NSUserDefaults.standardUserDefaults()
         
         if userDefaults.boolForKey("premiumUser") == false {
             
@@ -57,7 +57,7 @@ class ProfileTVC: PFQueryTableViewController {
         } else {
             
             self.tableView.hidden = false
-        }
+        }*/
         
         
         

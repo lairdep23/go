@@ -64,6 +64,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+        upgradeView.hidden = true
+        upgradeLabel.hidden = true 
+        
         print(USER_DISTANCE)
         print(USER_LAT)
         print(USER_LONG)
@@ -79,9 +82,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         tracker.send(builder.build() as [NSObject : AnyObject])
         
         
-        let userDefaults = NSUserDefaults.standardUserDefaults()
+        //let userDefaults = NSUserDefaults.standardUserDefaults()
         
-        if userDefaults.boolForKey("premiumUser") {
+       /* if userDefaults.boolForKey("premiumUser") {
             
             upgradeView.hidden = true
             upgradeLabel.hidden = true 
@@ -89,7 +92,7 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         } else {
             upgradeView.hidden = false
             upgradeLabel.hidden = false 
-        }
+        }*/
     }
     
     func dismissKeyboard() {

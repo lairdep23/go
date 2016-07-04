@@ -99,14 +99,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        PFPurchase.addObserverForProduct("GoEatPremium248915248915", block: { (transaction: SKPaymentTransaction) in
+       /* PFPurchase.addObserverForProduct("GoEatPremium248915248915", block: { (transaction: SKPaymentTransaction) in
             
             let userDefaults = NSUserDefaults.standardUserDefaults()
             
             userDefaults.setBool(true, forKey: "premiumUser")
             
             userDefaults.synchronize()
-        })
+        })*/
 
         //
         //  Swift 1.2

@@ -172,8 +172,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else if howItWorksLabel.text == "Confirm your location and set your distance willing to travel to the restaurant." {
             howItWorksLabel.text = "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare."
         } else if howItWorksLabel.text == "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare." {
-            howItWorksLabel.text = "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!"
-        } else if howItWorksLabel.text == "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!" {
+            howItWorksLabel.text = "We'll then give you directions or call you an Uber so you can be on your way to possibly your new favorite restaurant!"
+        } else if howItWorksLabel.text == "We'll then give you directions or call you an Uber so you can be on your way to possibly your new favorite restaurant!" {
             nextBut.title = ""
             howItWorksLabel.text = "The catch? \n \n The restaurant isn't revealed until you arrive!"
         }
@@ -193,13 +193,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             howItWorksLabel.text = "Confirm your location and set your distance willing to travel to the restaurant."
             
-        } else if howItWorksLabel.text == "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!" {
+        } else if howItWorksLabel.text == "We'll then give you directions or call you an Uber so you can be on your way to possibly your new favorite restaurant!" {
             
             howItWorksLabel.text = "Set your price range and keyword and we'll find you a top rated restaurant using Foursquare."
             
         } else if howItWorksLabel.text == "The catch? \n \n The restaurant isn't revealed until you arrive!" {
             
-            howItWorksLabel.text = "We'll then give you directions so you can be on your way to possibly your new favorite restaurant!"
+            howItWorksLabel.text = "We'll then give you directions or call you an Uber so you can be on your way to possibly your new favorite restaurant!"
         }
         
         
