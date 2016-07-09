@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("deep link data: %@", params.description)
         }
         
-        Configuration.setSandboxEnabled(true)
+        //Configuration.setSandboxEnabled(true)
         RidesAppDelegate.sharedInstance.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Configure tracker from GoogleService-Info.plist.

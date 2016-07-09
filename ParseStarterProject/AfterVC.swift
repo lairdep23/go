@@ -100,7 +100,7 @@ class AfterVC: UIViewController {
         
         if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterSheet.setInitialText("Share on Twitter")
+            twitterSheet.setInitialText("Had an awesome meal with @GoEatiOSApp Eveyone check it out! GoEatiOSApp.com #GoEat")
             self.presentViewController(twitterSheet, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -144,6 +144,7 @@ class AfterVC: UIViewController {
                                 USER_LAT = ""
                                 USER_LONG = ""
                                 USER_DISTANCE = ""
+                                timesLoaded = 1
                                 
                                 self.activityIndicator.stopAnimating()
                                 UIApplication.sharedApplication().endIgnoringInteractionEvents()

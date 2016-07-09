@@ -38,6 +38,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        timesLoaded = 1
+        
         open.target = self.revealViewController()
         open.action = #selector(SWRevealViewController.revealToggle(_:))
         

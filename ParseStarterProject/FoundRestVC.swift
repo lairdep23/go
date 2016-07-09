@@ -64,6 +64,7 @@ class FoundRestVC: UIViewController {
                         self.rideRequestButton.requestBehavior = self.buildRequestBehavior()
                         
                         self.view.addSubview(self.rideRequestButton)
+                        timesLoaded += 1
                         self.addRequestButtonConstraint()
                         self.rideRequestButton.colorStyle = .White
                         
@@ -104,6 +105,10 @@ class FoundRestVC: UIViewController {
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+        
+        if timesLoaded >= 2 {
+            displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
+        }
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
@@ -162,6 +167,7 @@ class FoundRestVC: UIViewController {
     
     func buildRequestBehavior() -> RideRequesting {
         let requestBehavior = RideRequestViewRequestingBehavior(presentingViewController: self)
+        
         return requestBehavior
     }
     
@@ -240,7 +246,7 @@ class FoundRestVC: UIViewController {
                 
                 if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
                     
-                    self.performSegueWithIdentifier("arrivedSegue", sender: self)
+                    self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
                     
                 }
                 
@@ -395,6 +401,20 @@ class FoundRestVC: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
+    
+    func displayArrivedAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes!", style: .Default, handler: { (action) in
+            self.performSegueWithIdentifier("arrivedSegue", sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: { (action) in
+            
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    
+    
     
     
 
