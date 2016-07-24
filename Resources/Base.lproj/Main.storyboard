@@ -22,72 +22,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImage2" translatesAutoresizingMaskIntoConstraints="NO" id="q9U-kq-0dM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-BW-L7y" customClass="MaterialView" customModule="GoEat" customModuleProvider="target">
-                                <rect key="frame" x="60" y="175" width="480" height="250"/>
-                                <subviews>
-                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkY-xw-p0H">
-                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="WJf-wb-VEE"/>
-                                        </constraints>
-                                        <items>
-                                            <navigationItem title="How GoEat Works!" id="Yes-YI-Smc">
-                                                <barButtonItem key="leftBarButtonItem" title="Back" id="4ca-pm-ecX">
-                                                    <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="backButton:" destination="BYZ-38-t0r" id="dOP-ye-6Xp"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                                <barButtonItem key="rightBarButtonItem" title="Next" id="06h-nW-HPD">
-                                                    <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="nextButton:" destination="BYZ-38-t0r" id="DNj-Cl-dRZ"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEf-SZ-OW9">
-                                        <rect key="frame" x="225" y="212" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Fai-5N-ZLI"/>
-                                            <constraint firstAttribute="height" constant="30" id="YXS-23-qhh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="Exit">
-                                            <color key="titleColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="exitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HIg-az-SZY"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in with a username and password, no email required!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdB-zd-eWD">
-                                        <rect key="frame" x="8" y="52" width="464" height="152"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="HkY-xw-p0H" firstAttribute="leading" secondItem="Jcr-BW-L7y" secondAttribute="leading" id="08a-vx-Tap"/>
-                                    <constraint firstItem="SdB-zd-eWD" firstAttribute="leading" secondItem="Jcr-BW-L7y" secondAttribute="leading" constant="8" id="CId-O0-oRo"/>
-                                    <constraint firstAttribute="trailing" secondItem="HkY-xw-p0H" secondAttribute="trailing" id="GQX-Wa-xFs"/>
-                                    <constraint firstItem="SdB-zd-eWD" firstAttribute="top" secondItem="HkY-xw-p0H" secondAttribute="bottom" constant="8" id="HuB-iS-Oxb"/>
-                                    <constraint firstItem="HkY-xw-p0H" firstAttribute="top" secondItem="Jcr-BW-L7y" secondAttribute="top" id="MJe-GQ-1Am"/>
-                                    <constraint firstAttribute="trailing" secondItem="SdB-zd-eWD" secondAttribute="trailing" constant="8" id="Mpf-3t-pip"/>
-                                    <constraint firstAttribute="bottom" secondItem="SdB-zd-eWD" secondAttribute="bottom" constant="8" id="QFI-uz-n5m"/>
-                                    <constraint firstAttribute="height" constant="250" id="bC3-pL-L8q"/>
-                                    <constraint firstItem="uEf-SZ-OW9" firstAttribute="top" secondItem="SdB-zd-eWD" secondAttribute="bottom" constant="8" id="iXG-E5-Aks"/>
-                                    <constraint firstAttribute="bottom" secondItem="uEf-SZ-OW9" secondAttribute="bottom" constant="8" id="x3o-rp-M7b"/>
-                                    <constraint firstItem="uEf-SZ-OW9" firstAttribute="centerX" secondItem="Jcr-BW-L7y" secondAttribute="centerX" id="yGE-P9-Vqk"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="QFI-uz-n5m"/>
-                                    </mask>
-                                </variation>
-                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="a7K-Eu-kkn">
                                 <rect key="frame" x="132" y="28" width="337" height="131"/>
                                 <constraints>
@@ -190,6 +124,72 @@
                                     <action selector="howItWorksButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R1t-ia-KWY"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jcr-BW-L7y" customClass="MaterialView" customModule="GoEat" customModuleProvider="target">
+                                <rect key="frame" x="60" y="175" width="480" height="250"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkY-xw-p0H">
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="WJf-wb-VEE"/>
+                                        </constraints>
+                                        <items>
+                                            <navigationItem title="How GoEat Works!" id="Yes-YI-Smc">
+                                                <barButtonItem key="leftBarButtonItem" title="Back" id="4ca-pm-ecX">
+                                                    <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="backButton:" destination="BYZ-38-t0r" id="dOP-ye-6Xp"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Next" id="06h-nW-HPD">
+                                                    <color key="tintColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="nextButton:" destination="BYZ-38-t0r" id="DNj-Cl-dRZ"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEf-SZ-OW9">
+                                        <rect key="frame" x="225" y="212" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Fai-5N-ZLI"/>
+                                            <constraint firstAttribute="height" constant="30" id="YXS-23-qhh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Exit">
+                                            <color key="titleColor" red="1" green="0.71764705880000002" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="exitButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HIg-az-SZY"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in with a username and password, no email required!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SdB-zd-eWD">
+                                        <rect key="frame" x="8" y="52" width="464" height="152"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.14901960780000001" green="0.77647058820000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.3294117647" green="0.43137254899999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="HkY-xw-p0H" firstAttribute="leading" secondItem="Jcr-BW-L7y" secondAttribute="leading" id="08a-vx-Tap"/>
+                                    <constraint firstItem="SdB-zd-eWD" firstAttribute="leading" secondItem="Jcr-BW-L7y" secondAttribute="leading" constant="8" id="CId-O0-oRo"/>
+                                    <constraint firstAttribute="trailing" secondItem="HkY-xw-p0H" secondAttribute="trailing" id="GQX-Wa-xFs"/>
+                                    <constraint firstItem="SdB-zd-eWD" firstAttribute="top" secondItem="HkY-xw-p0H" secondAttribute="bottom" constant="8" id="HuB-iS-Oxb"/>
+                                    <constraint firstItem="HkY-xw-p0H" firstAttribute="top" secondItem="Jcr-BW-L7y" secondAttribute="top" id="MJe-GQ-1Am"/>
+                                    <constraint firstAttribute="trailing" secondItem="SdB-zd-eWD" secondAttribute="trailing" constant="8" id="Mpf-3t-pip"/>
+                                    <constraint firstAttribute="bottom" secondItem="SdB-zd-eWD" secondAttribute="bottom" constant="8" id="QFI-uz-n5m"/>
+                                    <constraint firstAttribute="height" constant="250" id="bC3-pL-L8q"/>
+                                    <constraint firstItem="uEf-SZ-OW9" firstAttribute="top" secondItem="SdB-zd-eWD" secondAttribute="bottom" constant="8" id="iXG-E5-Aks"/>
+                                    <constraint firstAttribute="bottom" secondItem="uEf-SZ-OW9" secondAttribute="bottom" constant="8" id="x3o-rp-M7b"/>
+                                    <constraint firstItem="uEf-SZ-OW9" firstAttribute="centerX" secondItem="Jcr-BW-L7y" secondAttribute="centerX" id="yGE-P9-Vqk"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="QFI-uz-n5m"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

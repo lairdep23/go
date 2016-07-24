@@ -244,6 +244,11 @@ class FoundRestVC: UIViewController {
                 
                 mapItem.openInMapsWithLaunchOptions(launchOptions)
                 
+                let push = PFPush()
+                push.setChannel("GoEat")
+                push.setMessage("Once you've arrived just hop back on to GoEat using the top left corner to reveal your surprise restaurant!")
+                push.sendPushInBackground()
+                
                 if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
                     
                     self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")

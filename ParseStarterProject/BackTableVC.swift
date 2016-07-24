@@ -78,7 +78,8 @@ class BackTableVC: UITableViewController {
             self.displayLogOutAlert("Are You Sure?", message: "All requests will be canceled if you log out.")
             
         } else if tableArray[indexPath.row] == "Upgrade to Premium" {
-            self.displayUpgradeAlert("Upgrade to Premium!", message: "Enjoy awesome benefits such as keywords, your profile, and much more!")
+            //self.displayUpgradeAlert("Upgrade to Premium!", message: "Enjoy awesome benefits such as keywords, your profile, and much more!")
+            self.displayAlert("No Need to Upgrade!", message: "For a limited time GoEat and all it's features are absolutely FREE! Enjoy:)")
         }
     }
     
@@ -144,9 +145,7 @@ class BackTableVC: UITableViewController {
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
-            
-            self.dismissViewControllerAnimated(true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
             
         }))
         

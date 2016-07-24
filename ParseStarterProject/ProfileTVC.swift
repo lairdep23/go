@@ -114,7 +114,7 @@ class ProfileTVC: PFQueryTableViewController {
             
             webUrls.append((cell?.restWebUrl)!)
             fourUrls.append((cell?.restFourUrl)!)
-            
+            NSURLIsExcludedFromBackupKey
             
             
             let dateFormatter = NSDateFormatter()

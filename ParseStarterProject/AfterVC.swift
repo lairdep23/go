@@ -70,11 +70,13 @@ class AfterVC: UIViewController {
         
             if let url = NSURL(string: "\(restaurant.websiteUrl)") {
                 UIApplication.sharedApplication().openURL(url)
+                NSURLIsExcludedFromBackupKey
             }
         } else if restaurant.websiteUrl == "" {
             
             if let fourUrl = NSURL(string: "\(restaurant.fourUrl)") {
                 UIApplication.sharedApplication().openURL(fourUrl)
+                NSURLIsExcludedFromBackupKey
             }
         }
     }
@@ -149,6 +151,8 @@ class AfterVC: UIViewController {
                                 self.activityIndicator.stopAnimating()
                                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                                 
+                                self.displayRateAlert("Did you have a good time??", message: "If so, please rate our app! We would really appreciate it!")
+                                
                                 self.navigationController?.popToRootViewControllerAnimated(true)
                             } else {
                                 self.activityIndicator.stopAnimating()
@@ -181,6 +185,22 @@ class AfterVC: UIViewController {
         
     }
     
+    func displayRateAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Not Now:(", style: .Cancel, handler: { (action) in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Rate GoEat", style: .Default, handler: { (action) in
+            
+            UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id1129022364")!)
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     
     

@@ -15,22 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.12.0</string>
+	<string>1.13.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>UberClientID</key>
-	<string>v5_8aHek6z7NGSynQwiZrtL9rr3fcvxb</string>
-	<key>UberDisplayName</key>
-	<string>GoEatiOSApp</string>
-	<key>UberCallbackURIs</key>
-	<array>
-		<dict>
-			<key>UberCallbackURIType</key>
-			<string>General</string>
-			<key>URIString</key>
-			<string>https://so5x.app.link/IdOrfM7Wwu</string>
-		</dict>
-	</array>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -43,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.12.0</string>
+	<string>1.13.2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>uberauth</string>
@@ -78,6 +65,19 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UberCallbackURIs</key>
+	<array>
+		<dict>
+			<key>URIString</key>
+			<string>https://so5x.app.link/IdOrfM7Wwu</string>
+			<key>UberCallbackURIType</key>
+			<string>General</string>
+		</dict>
+	</array>
+	<key>UberClientID</key>
+	<string>v5_8aHek6z7NGSynQwiZrtL9rr3fcvxb</string>
+	<key>UberDisplayName</key>
+	<string>GoEatiOSApp</string>
 	<key>branch_key</key>
 	<string>key_live_pcg1WBe1RgPWPZz5IGrgfdcnsyc9cdm0</string>
 </dict>
