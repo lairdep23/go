@@ -290,9 +290,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.dismissViewControllerAnimated(true, completion: nil)
             
         }))
         

@@ -67,6 +67,14 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         let imageView = UIImageView(image: logo)
         self.navigationItem.titleView = imageView
         
+        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        if launchedBefore {
+            print("Not First Launch")
+        } else {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+            displayEmailAlert("Thank you for downloading GoEat!", message: "Enter your email to recieve a personal thank you letter from the founder, Evan!")
+        }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -86,6 +94,23 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: 130)
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: 130)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -141,9 +166,9 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     func displayAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            //self.dismissViewControllerAnimated(true, completion: nil)
             
         }))
         
@@ -288,6 +313,40 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             }
         }
     }
+    }
+    
+    func displayEmailAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    
+        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+            textField.placeholder = "Enter Email"
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+            let textField = alert.textFields![0] as UITextField
+            
+            let emailRequest = PFObject(className: "UserEmailStart")
+            emailRequest["username"] = PFUser.currentUser()?.username
+            emailRequest["email"] = textField.text
+            emailRequest.saveInBackgroundWithBlock { (success, error) in
+                
+                if success {
+                    
+                    gotEmail = true
+                    
+                } else {
+                    
+                    gotEmail = false
+                    
+                }
+            }
+            
+            
+            
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
 }

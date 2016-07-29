@@ -10,12 +10,13 @@ import UIKit
 import Social
 import Parse
 
-class AfterVC: UIViewController {
+class AfterVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var address: UILabel!
     
+    @IBOutlet weak var enterEmail: UITextField!
    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -28,6 +29,8 @@ class AfterVC: UIViewController {
         let logo = UIImage(named: "logoSmall")
         let imageView = UIImageView(image: logo)
         self.navigationItem.titleView = imageView
+        
+        enterEmail.delegate = self
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         
@@ -51,6 +54,32 @@ class AfterVC: UIViewController {
         
         
         
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: 195)
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: 195)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -128,6 +157,28 @@ class AfterVC: UIViewController {
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        if enterEmail.text != "" {
+            
+            let emailRequest = PFObject(className: "UserEmail")
+            emailRequest["username"] = PFUser.currentUser()?.username
+            emailRequest["email"] = self.enterEmail.text
+            emailRequest.saveInBackgroundWithBlock { (success, error) in
+                
+                if success {
+                    
+                    gotEmail = true
+                    
+                } else {
+                    
+                    gotEmail = false
+                    
+                }
+            }
+            
+            
+            
+        }
         
         let query = PFQuery(className: "restRequest")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)

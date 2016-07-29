@@ -17,6 +17,7 @@ var USER_LONG = ""
 var USER_DISTANCE = ""
 var restaurant: Restaurant!
 var timesLoaded = 1
+var gotEmail = false
 
 
 
