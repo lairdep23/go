@@ -964,6 +964,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="favRestLabel" destination="Zdx-ZN-y1d" id="Eor-iO-3yK"/>
+                        <outlet property="restaurantFoundLabel" destination="2fq-JN-zbB" id="YYI-Pu-2yX"/>
                         <segue destination="7J6-e1-uCu" kind="show" identifier="arrivedSegue" id="7oz-uq-aD0"/>
                     </connections>
                 </viewController>

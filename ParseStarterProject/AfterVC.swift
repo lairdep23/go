@@ -32,6 +32,9 @@ class AfterVC: UIViewController, UITextFieldDelegate {
         
         enterEmail.delegate = self
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         name.text = restaurant.name

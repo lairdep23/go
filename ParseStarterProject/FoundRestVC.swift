@@ -15,6 +15,7 @@ class FoundRestVC: UIViewController {
 
     @IBOutlet weak var favRestLabel: UILabel!
     
+    @IBOutlet weak var restaurantFoundLabel: UILabel!
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -45,6 +46,8 @@ class FoundRestVC: UIViewController {
         restaurant.downloadFoursquareRest { () -> () in
             
             if restaurant.couldntFind == false {
+                
+                self.restaurantFoundLabel.text = "Restaurant Found!"
                 
                 self.updateUI()
                 
@@ -85,6 +88,7 @@ class FoundRestVC: UIViewController {
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 self.displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+                self.restaurantFoundLabel.text = "Restaurant Not Found:("
             }
             
             

@@ -64,6 +64,9 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         upgradeView.hidden = true
         upgradeLabel.hidden = true 
         
@@ -102,6 +105,23 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        animateViewMoving(true, moveValue: 100)
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        animateViewMoving(false, moveValue: 100)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
     }
 
     @IBAction func restartButton(sender: AnyObject) {

@@ -35,6 +35,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -154,6 +155,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                 
                 self.confirmedLocation = true
                 hasMadeRestRequest = true
+                
+                self.confirmLocAlert("Location Confirmed!", message: "")
                 
             } else {
                 
@@ -346,6 +349,24 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         }))
         
         self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
+    func confirmLocAlert(title: String, message: String) -> Void{
+        
+        let alertController = UIAlertController(title: title , message: message, preferredStyle: .Alert)
+        self.presentViewController(alertController, animated: true, completion: nil)
+        let delay = 1.0 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            alertController.dismissViewControllerAnimated(true, completion: nil)
+        })
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
+            
+        }))
+        
+        
         
     }
     
