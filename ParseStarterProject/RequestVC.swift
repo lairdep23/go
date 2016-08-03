@@ -27,6 +27,12 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var upgradeView: MaterialView!
     
+    @IBOutlet weak var RvsBSwitch: UISwitch!
+    
+    
+    
+    
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     var onePressed = false
@@ -37,6 +43,7 @@ class RequestVC: UIViewController, UITextFieldDelegate {
     var priceRange = "1,2,3,4"
     var confirmedKeyword = ""
     var url = ""
+    var confirmedState = ""
     
     
     
@@ -73,6 +80,12 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         print(USER_DISTANCE)
         print(USER_LAT)
         print(USER_LONG)
+        
+        RvsBSwitch.on = false
+        
+        switchState = "Restaurant"
+        
+        RvsBSwitch.addTarget(self, action: #selector(RequestVC.switchIsChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -286,16 +299,29 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         }
         
         
+        
+        
     }
     
     @IBAction func findRestaurant(sender: AnyObject) {
         
-        if keyword.text != "" {
+        print(confirmedState)
+        
+        confirmedState = switchState
+        
+        if confirmedState == "Restaurant" {
+        
+            if keyword.text != "" {
             
-            url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
+                url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=\(confirmedKeyword)"
+            } else {
+                url = URL_BASE + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=restaurant"
+            }
         } else {
-            url = URL_BASE + "&section=food" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)" + "&query=restaurant"
+            
+                url = URL_BASE + "&section=drinks" + "&ll=\(USER_LAT),\(USER_LONG)" + "&radius=\(USER_DISTANCE)" + "&price=\(priceRange)"
         }
+        
         
         restaurant = Restaurant(url: url)
         
@@ -319,6 +345,15 @@ class RequestVC: UIViewController, UITextFieldDelegate {
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
+    
+    func switchIsChanged(RvsBSwitch: UISwitch){
+        if RvsBSwitch.on {
+            switchState = "Bar"
+        } else {
+            switchState = "Restaurant"
+        }
+    }
+
 
 
 }

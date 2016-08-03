@@ -19,6 +19,8 @@ var restaurant: Restaurant!
 var timesLoaded = 1
 var gotEmail = false
 
+var switchState = "Restaurant"
+
 
 
 typealias DownloadComplete = () -> Void

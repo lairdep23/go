@@ -17,6 +17,8 @@ class FoundRestVC: UIViewController {
     
     @IBOutlet weak var restaurantFoundLabel: UILabel!
     
+    @IBOutlet weak var suggestionLabel: UILabel!
+    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     var dropOff_Lat = CLLocationCoordinate2D().latitude
@@ -47,7 +49,15 @@ class FoundRestVC: UIViewController {
             
             if restaurant.couldntFind == false {
                 
-                self.restaurantFoundLabel.text = "Restaurant Found!"
+                if switchState == "Restaurant"{
+                
+                    self.restaurantFoundLabel.text = "Restaurant Found!"
+                    self.suggestionLabel.text = "Your restaurant suggestion is..."
+                
+                } else {
+                    self.restaurantFoundLabel.text = "Bar Found!"
+                    self.suggestionLabel.text = "Your bar suggestion is..."
+                }
                 
                 self.updateUI()
                 
@@ -87,8 +97,16 @@ class FoundRestVC: UIViewController {
                 self.activityIndicator.stopAnimating()
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
-                self.displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
-                self.restaurantFoundLabel.text = "Restaurant Not Found:("
+                if switchState == "Restaurant" {
+                    self.displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+                    self.restaurantFoundLabel.text = "Restaurant Not Found:("
+                    
+                } else {
+                    
+                    self.displayRestartAlert("Sorry, we could not find a bar:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+                    self.restaurantFoundLabel.text = "Bar Not Found:("
+                    
+                }
             }
             
             
@@ -111,7 +129,7 @@ class FoundRestVC: UIViewController {
         tracker.send(builder.build() as [NSObject : AnyObject])
         
         if timesLoaded >= 2 {
-            displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
+            displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal.")
         }
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -138,16 +156,28 @@ class FoundRestVC: UIViewController {
             let distanceDouble = Double(restaurant.distance) * 0.000621371
             let roundedDistance = Double(round(distanceDouble*10)/10)
             
-            favRestLabel.text = "Your new favorite restaurant is only \(roundedDistance) miles away, so what are you waiting for and..."
+            if switchState == "Restaurant" {
             
+                favRestLabel.text = "Your new favorite restaurant is only \(roundedDistance) miles away, so what are you waiting for and..."
+            } else {
+                
+                favRestLabel.text = "Your new favorite bar is only \(roundedDistance) miles away, so what are you waiting for and..."
+            }
             
         } else {
             
             self.uiUpdated = false
             
-            restaurant.couldntFind = false 
+            restaurant.couldntFind = false
             
-            displayRestartAlert("Sorry, we could not find a restaurant:(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+            if switchState == "Restaurant" {
+            
+                displayRestartAlert("Sorry, we could not find a restaurant :(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+            } else {
+                
+                displayRestartAlert("Sorry, we could not find a bar :(", message: "Please restart and broaden your distance, price range, or keyword. Thank you!")
+                
+            }
         }
         
     }
@@ -234,6 +264,66 @@ class FoundRestVC: UIViewController {
         
         let geoCoder = CLGeocoder()
         
+        if switchState == "Bar" {
+            
+            let alertController = UIAlertController(title: "Please don't drink and drive!" , message: "", preferredStyle: .Alert)
+            
+            alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
+                
+                geoCoder.geocodeAddressString(address) { (placemark, error) in
+                    
+                    if (placemark?[0]) != nil {
+                        
+                        let mkPlace = MKPlacemark(placemark: placemark![0])
+                        
+                        let mapItem = MKMapItem(placemark: mkPlace)
+                        
+                        if switchState == "Restaurant" {
+                            
+                            mapItem.name = "Your New Fav Restaurant"
+                            
+                            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                            
+                            mapItem.openInMapsWithLaunchOptions(launchOptions)
+                            
+                            if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
+                                
+                                self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
+                            }
+                            
+                        } else {
+                            
+                            mapItem.name = "Your New Fav Bar"
+                            
+                            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                            
+                            mapItem.openInMapsWithLaunchOptions(launchOptions)
+                            
+                            if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
+                                
+                                self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the bar.")
+                            }
+                            /*let push = PFPush()
+                             push.setChannel("GoEat")
+                             push.setMessage("Once you've arrived just hop back on to GoEat using the top left corner to reveal your surprise restaurant!")
+                             push.sendPushInBackground()*/
+                            
+                            
+                        }
+                        
+                        
+                    } else {
+                        self.displayRestartAlert("We are very sorry :(", message: "We could not find the address of this venue, please restart and try again!")
+                    }
+                }
+                
+                
+            }))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            
+        } else {
+        
         geoCoder.geocodeAddressString(address) { (placemark, error) in
             
             if (placemark?[0]) != nil {
@@ -242,29 +332,45 @@ class FoundRestVC: UIViewController {
                 
                 let mapItem = MKMapItem(placemark: mkPlace)
                 
-                mapItem.name = "Your New Fav Restaurant"
+                if switchState == "Restaurant" {
                 
-                let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                    mapItem.name = "Your New Fav Restaurant"
                 
-                mapItem.openInMapsWithLaunchOptions(launchOptions)
+                    let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
                 
+                    mapItem.openInMapsWithLaunchOptions(launchOptions)
+                    
+                    if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
+                        
+                        self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
+                    }
+                
+                } else {
+                    
+                    mapItem.name = "Your New Fav Bar"
+                    
+                    let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+                    
+                    mapItem.openInMapsWithLaunchOptions(launchOptions)
+                    
+                    if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
+                        
+                        self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the bar.")
+                    }
                 /*let push = PFPush()
                 push.setChannel("GoEat")
                 push.setMessage("Once you've arrived just hop back on to GoEat using the top left corner to reveal your surprise restaurant!")
                 push.sendPushInBackground()*/
                 
-                if mapItem.openInMapsWithLaunchOptions(launchOptions).boolValue == false {
-                    
-                    self.displayArrivedAlert("Would you like to reveal your destination?", message: "If you have arrived or are close to arriving, press Yes to reveal the restaurant.")
-                    
+                
                 }
                 
                 
             } else {
-                self.displayRestartAlert("We are very sorry :(", message: "We could not find the address of this restaurant, please restart and try again!")
+                self.displayRestartAlert("We are very sorry :(", message: "We could not find the address of this venue, please restart and try again!")
             }
         }
-        
+        }
         
         
         
@@ -397,7 +503,7 @@ class FoundRestVC: UIViewController {
                 
             } else {
                 self.dismissViewControllerAnimated(true, completion: nil)
-                self.displayAlert("Could not find number", message: "We are sorry but we could not find this restaurants number :(")
+                self.displayAlert("Could not find number", message: "We are sorry but we could not find this destination's number :(")
             }
             
         }))
