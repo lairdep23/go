@@ -68,62 +68,62 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         let imageView = UIImageView(image: logo)
         self.navigationItem.titleView = imageView
         
-        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
         if launchedBefore {
             print("Not First Launch")
         } else {
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
             displayEmailAlert("Thank you for downloading GoEat!", message: "Enter your email to recieve a personal thank you letter from the founder, Evan!")
         }
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "HomeVC Screen")
+        tracker?.set(kGAIScreenName, value: "HomeVC Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         animateViewMoving(true, moveValue: 130)
     }
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         animateViewMoving(false, moveValue: 130)
     }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:NSTimeInterval = 0.3
+    func animateViewMoving (_ up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
         let movement:CGFloat = ( up ? -moveValue : moveValue)
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration )
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        let aSet = NSCharacterSet(charactersInString:"0123456789").invertedSet
-        let compSepByCharInSet = string.componentsSeparatedByCharactersInSet(aSet)
-        let numberFiltered = compSepByCharInSet.joinWithSeparator("")
+        let aSet = CharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
         return string == numberFiltered
         
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location: CLLocationCoordinate2D = manager.location!.coordinate
         
         lat = location.latitude
@@ -139,14 +139,14 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     }
 
 
-    @IBAction func confirmLocation(sender: AnyObject) {
+    @IBAction func confirmLocation(_ sender: AnyObject) {
         print("\(lat)\(long)")
-        print(PFUser.currentUser()?.username)
+        print(PFUser.current()?.username)
         
         let restRequest = PFObject(className: "restRequest")
-        restRequest["username"] = PFUser.currentUser()?.username
+        restRequest["username"] = PFUser.current()?.username
         restRequest["userLocation"] = PFGeoPoint(latitude: lat, longitude: long)
-        restRequest.saveInBackgroundWithBlock { (success, error) in
+        restRequest.saveInBackground { (success, error) in
             
             if success {
                 
@@ -166,48 +166,48 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
         }
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
             
             //self.dismissViewControllerAnimated(true, completion: nil)
             
         }))
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
         
     }
     
-    @IBAction func restartButton(sender: AnyObject) {
+    @IBAction func restartButton(_ sender: AnyObject) {
         
-        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
     
         
         let query = PFQuery(className: "restRequest")
-        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
-        query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+        query.findObjectsInBackground { (objects:[PFObject]?, error: NSError?) in
             
             if error == nil {
                 
                 self.activityIndicator.stopAnimating()
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 
                 if let objects = objects as [PFObject]! {
                     for object in objects {
-                        object.deleteInBackgroundWithBlock({ (success, error) in
+                        object.deleteInBackground(block: { (success, error) in
                           
                             if success {
                                 
                                 self.activityIndicator.stopAnimating()
-                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                UIApplication.shared.endIgnoringInteractionEvents()
                                 
                                 self.confirmedLocation = false
                                 hasMadeRestRequest = false
@@ -218,7 +218,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                                 
                             } else {
                                 self.activityIndicator.stopAnimating()
-                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                UIApplication.shared.endIgnoringInteractionEvents()
                             }
                             
                         })
@@ -229,28 +229,28 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             } else {
                 
                 self.activityIndicator.stopAnimating()
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 
                 self.displayAlert("Could not restart", message: "\(error)")
             }
         }
     }
     
-    @IBAction func confirmDistance(sender: AnyObject) {
+    @IBAction func confirmDistance(_ sender: AnyObject) {
         
-        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         
         
         let query = PFQuery(className: "restRequest")
-        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
-        query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+        query.findObjectsInBackground { (objects:[PFObject]?, error: NSError?) in
             
             if error == nil {
                 
@@ -265,20 +265,20 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                             let confirmedDistanceMeters = Double(self.distanceTextField.text!)! * 1609
                             
                             let query = PFQuery(className: "restRequest")
-                            query.getObjectInBackgroundWithId(object.objectId!, block: { (object: PFObject?, error: NSError?) in
+                            query.getObjectInBackground(withId: object.objectId!, block: { (object: PFObject?, error: NSError?) in
                                 
                                 if error != nil {
                                     print(error)
                                 } else if let object = object {
                                     
                                     object["userDistance"] = "\(confirmedDistanceMeters)"
-                                    object.saveInBackgroundWithBlock({ (success, error) in
+                                    object.saveInBackground(block: { (success, error) in
                                         
                                         self.activityIndicator.stopAnimating()
-                                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                        UIApplication.shared.endIgnoringInteractionEvents()
                                         
                                         if error == nil {
-                                            self.performSegueWithIdentifier("homeToRequestSegue", sender: nil)
+                                            self.performSegue(withIdentifier: "homeToRequestSegue", sender: nil)
                                             USER_DISTANCE = "\(confirmedDistanceMeters)"
                                         } else {
                                            
@@ -293,14 +293,14 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
                         } else {
                             
                             self.activityIndicator.stopAnimating()
-                            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                            UIApplication.shared.endIgnoringInteractionEvents()
                             
                         self.displayAlert("Could not confirm distance", message: "Please type in a distance willing to travel between 1-100, thank you!")
                         }
                     } else {
                         
                         self.activityIndicator.stopAnimating()
-                        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                        UIApplication.shared.endIgnoringInteractionEvents()
                     
                         self.displayAlert("Could not confirm distance", message: "Please confirm your location first, thank you!")
                     
@@ -310,7 +310,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             } else {
                     
                     self.activityIndicator.stopAnimating()
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 
                 self.displayAlert("Could not confirm distance", message: "\(error)")
             }
@@ -318,20 +318,20 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
     }
     }
     
-    func displayEmailAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    func displayEmailAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
-        alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+        alert.addTextField(configurationHandler: { (textField) -> Void in
             textField.placeholder = "Enter Email"
         })
         
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             let textField = alert.textFields![0] as UITextField
             
             let emailRequest = PFObject(className: "UserEmailStart")
-            emailRequest["username"] = PFUser.currentUser()?.username
+            emailRequest["username"] = PFUser.current()?.username
             emailRequest["email"] = textField.text
-            emailRequest.saveInBackgroundWithBlock { (success, error) in
+            emailRequest.saveInBackground { (success, error) in
                 
                 if success {
                     
@@ -348,21 +348,21 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, UITextFieldDelegate {
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func confirmLocAlert(title: String, message: String) -> Void{
+    func confirmLocAlert(_ title: String, message: String) -> Void{
         
-        let alertController = UIAlertController(title: title , message: message, preferredStyle: .Alert)
-        self.presentViewController(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: title , message: message, preferredStyle: .alert)
+        self.present(alertController, animated: true, completion: nil)
         let delay = 1.0 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            alertController.dismissViewControllerAnimated(true, completion: nil)
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
+            alertController.dismiss(animated: true, completion: nil)
         })
         
-        alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
             
         }))
         

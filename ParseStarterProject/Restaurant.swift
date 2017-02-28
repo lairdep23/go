@@ -11,16 +11,16 @@ import Alamofire
 
 class Restaurant {
     
-    private var _name: String!
-    private var _url: String!
-    private var _address: String!
-    private var _city: String!
-    private var _zip: String!
-    private var _state: String!
-    private var _distance: Int!
-    private var _websiteUrl: String!
-    private var _fourUrl: String!
-    private var _phoneNumber: String!
+    fileprivate var _name: String!
+    fileprivate var _url: String!
+    fileprivate var _address: String!
+    fileprivate var _city: String!
+    fileprivate var _zip: String!
+    fileprivate var _state: String!
+    fileprivate var _distance: Int!
+    fileprivate var _websiteUrl: String!
+    fileprivate var _fourUrl: String!
+    fileprivate var _phoneNumber: String!
     var couldntFind = false
     
 
@@ -107,9 +107,9 @@ class Restaurant {
         self._url = url 
     }
     
-    func downloadFoursquareRest(completed: DownloadComplete) {
+    func downloadFoursquareRest(_ completed: @escaping DownloadComplete) {
         
-        let alamoUrl = NSURL(string: _url)!
+        let alamoUrl = URL(string: _url)!
         
         Alamofire.request(.GET, alamoUrl).responseJSON { response in
             let result = response.result

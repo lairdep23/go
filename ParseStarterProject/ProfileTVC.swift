@@ -27,7 +27,7 @@ class ProfileTVC: PFQueryTableViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         
-        self.navigationItem.title = PFUser.currentUser()?.username
+        self.navigationItem.title = PFUser.current()?.username
         self.navigationController?.navigationBar.tintColor = UIColor(red: 0.149, green: 0.776, blue: 0.855, alpha: 1.00)
         
         tableView.estimatedRowHeight = 90
@@ -35,17 +35,17 @@ class ProfileTVC: PFQueryTableViewController {
     
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         webUrls.removeAll()
         fourUrls.removeAll()
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "ProfileVC Screen")
+        tracker?.set(kGAIScreenName, value: "ProfileVC Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
         
         /*let userDefaults = NSUserDefaults.standardUserDefaults()
         
@@ -81,27 +81,28 @@ class ProfileTVC: PFQueryTableViewController {
     
     }
     
-    override func queryForTable() -> PFQuery {
+    override func queryForTable() -> PFQuery<PFObject> {
         let query = PFQuery(className: self.parseClassName!)
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
         
         if self.objects!.count == 0 {
-            query.cachePolicy = .CacheThenNetwork
+            query.cachePolicy = .cacheThenNetwork
         }
         
-        query.orderByDescending("createdAt")
+        query.order(byDescending: "createdAt")
         
         return query
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject?) -> ProfileCell? {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath, object: PFObject?) -> ProfileCell? {
         
         
         let cellIdentifier = "cell"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? ProfileCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? ProfileCell
         
         if cell == nil {
-            cell = ProfileCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
+            cell = ProfileCell(style: .subtitle, reuseIdentifier: cellIdentifier)
         }
         
         if let object = object {
@@ -114,13 +115,13 @@ class ProfileTVC: PFQueryTableViewController {
             
             webUrls.append((cell?.restWebUrl)!)
             fourUrls.append((cell?.restFourUrl)!)
-            NSURLIsExcludedFromBackupKey
+            URLResourceKey.isExcludedFromBackupKey
             
             
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-            let createdAt: NSDate = object.createdAt!
-            cell?.restTime.text = dateFormatter.stringFromDate(createdAt)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = DateFormatter.Style.medium
+            let createdAt: Date = object.createdAt!
+            cell?.restTime.text = dateFormatter.string(from: createdAt)
             
             
         }
@@ -129,30 +130,30 @@ class ProfileTVC: PFQueryTableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let url = webUrls[indexPath.row]
         let fourUrl = fourUrls[indexPath.row]
         
         if url != "" {
             
-            if let NSUrl = NSURL(string: url) {
-                UIApplication.sharedApplication().openURL(NSUrl)
+            if let NSUrl = URL(string: url) {
+                UIApplication.shared.openURL(NSUrl)
             }
             
         } else if url == "" {
-            if let NSurl = NSURL(string: fourUrl) {
-                UIApplication.sharedApplication().openURL(NSurl)
+            if let NSurl = URL(string: fourUrl) {
+                UIApplication.shared.openURL(NSurl)
             }
         }
         
         
     }
     
-    func displayUpgradeAlert(title: String, message: String) {
+    func displayUpgradeAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Upgrade!", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Upgrade!", style: .default, handler: { (action) in
             
             
             
@@ -162,18 +163,18 @@ class ProfileTVC: PFQueryTableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func displayBuyAlert(title: String, message: String) {
+    func displayBuyAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Buy!", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Buy!", style: .default, handler: { (action) in
             
             PFPurchase.buyProduct("GoEatPremium248915248915", block: { (error) in
                 if error != nil {
@@ -181,27 +182,27 @@ class ProfileTVC: PFQueryTableViewController {
                 }
             })
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
 

@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        howItWorksView.hidden = true
+        howItWorksView.isHidden = true
         
     }
 
@@ -50,12 +50,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    @IBAction func signUpButton(sender: AnyObject) {
+    @IBAction func signUpButton(_ sender: AnyObject) {
         
         if username.text == "" || password.text == "" {
             
@@ -64,14 +64,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         } else {
             
-            activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+            activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
             activityIndicator.center = self.view.center
             activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             
             view.addSubview(activityIndicator)
             activityIndicator.startAnimating()
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
             var errorMessage = "Please try again later."
                 
@@ -81,14 +81,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
                 
                 
-                user.signUpInBackgroundWithBlock({ (success, error) in
+                user.signUpInBackground(block: { (success, error) in
                     
                     self.activityIndicator.stopAnimating()
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     
                     if error == nil {
                         
-                        self.performSegueWithIdentifier("loginSegue", sender: self)
+                        self.performSegue(withIdentifier: "loginSegue", sender: self)
                         print("signed up")
                         
                     } else {
@@ -105,18 +105,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    @IBAction func logInButton(sender: AnyObject) {
+    @IBAction func logInButton(_ sender: AnyObject) {
         
         var errorMessage = "Please try again later."
         
-        PFUser.logInWithUsernameInBackground(username.text!, password: password.text! , block: { (user, error) in
+        PFUser.logInWithUsername(inBackground: username.text!, password: password.text! , block: { (user, error) in
             
             self.activityIndicator.stopAnimating()
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            UIApplication.shared.endIgnoringInteractionEvents()
             
             if user != nil {
                 
-               self.performSegueWithIdentifier("loginSegue", sender: self)
+               self.performSegue(withIdentifier: "loginSegue", sender: self)
                 print("logged in")
                 
             } else {
@@ -133,29 +133,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
-        howItWorksView.hidden = true
+        howItWorksView.isHidden = true
         
-        if PFUser.currentUser()?.username != nil {
+        if PFUser.current()?.username != nil {
             
-            self.performSegueWithIdentifier("loginSegue", sender: self)
+            self.performSegue(withIdentifier: "loginSegue", sender: self)
             
            // print("already logged in")
         }
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "Login Screen")
+        tracker?.set(kGAIScreenName, value: "Login Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
 
 
 
-    @IBAction func howItWorksButton(sender: AnyObject) {
+    @IBAction func howItWorksButton(_ sender: AnyObject) {
         
-        howItWorksView.hidden = false
+        howItWorksView.isHidden = false
         
         howItWorksLabel.text = "Sign up with a username and password, no email required!"
         nextBut.title = "Next"
@@ -164,7 +164,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func nextButton(sender: AnyObject) {
+    @IBAction func nextButton(_ sender: AnyObject) {
         
         if howItWorksLabel.text == "Sign up with a username and password, no email required!" {
             backBut.title = "Back"
@@ -181,7 +181,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func backButton(sender: AnyObject) {
+    @IBAction func backButton(_ sender: AnyObject) {
         
         if howItWorksLabel.text == "Confirm your location and set your distance willing to travel to the restaurant." {
             
@@ -206,22 +206,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    @IBAction func exitButton(sender: AnyObject) {
-        howItWorksView.hidden = true
+    @IBAction func exitButton(_ sender: AnyObject) {
+        howItWorksView.isHidden = true
     }
     
 
 
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
 

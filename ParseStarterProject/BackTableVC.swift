@@ -23,14 +23,14 @@ class BackTableVC: UITableViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "SideMenu Screen")
+        tracker?.set(kGAIScreenName, value: "SideMenu Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,19 +40,19 @@ class BackTableVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return tableArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(tableArray[indexPath.row], forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableArray[indexPath.row], for: indexPath)
 
         
         
@@ -71,7 +71,7 @@ class BackTableVC: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableArray[indexPath.row] == "Log Out" {
             
@@ -83,20 +83,20 @@ class BackTableVC: UITableViewController {
         }
     }
     
-    func displayLogOutAlert(title: String, message: String) {
+    func displayLogOutAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Log Out :(", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Log Out :(", style: .default, handler: { (action) in
             
-            print(PFUser.currentUser()?.username!)
+            print(PFUser.current()?.username!)
             
-            if action.enabled {
+            if action.isEnabled {
                 
                 do {
             
             let query = PFQuery(className: "restRequest")
-            query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
-            query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+            query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+            query.findObjectsInBackground { (objects:[PFObject]?, error: NSError?) in
                 
                 if error == nil {
                     
@@ -104,12 +104,12 @@ class BackTableVC: UITableViewController {
                         
                         if let objects = objects as [PFObject]! {
                             for object in objects {
-                                  object.deleteInBackgroundWithBlock({ (success, error) in
+                                  object.deleteInBackground(block: { (success, error) in
                                     
                                     if success {
                                         
                                         PFUser.logOut()
-                                        self.performSegueWithIdentifier("logOutSegue", sender: self)
+                                        self.performSegue(withIdentifier: "logOutSegue", sender: self)
                                     }
                                     
                                   })
@@ -119,7 +119,7 @@ class BackTableVC: UITableViewController {
                             }
                     } else {
                         PFUser.logOut()
-                        self.performSegueWithIdentifier("logOutSegue", sender: self)
+                        self.performSegue(withIdentifier: "logOutSegue", sender: self)
                         
                     }
                     }
@@ -133,41 +133,41 @@ class BackTableVC: UITableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             
             self.willDeleteRequests = false
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Cancel, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action) in
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func displayBuyAlert(title: String, message: String) {
+    func displayBuyAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Buy!", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Buy!", style: .default, handler: { (action) in
             
-            dispatch_after(UInt64(0.2), dispatch_get_main_queue(), {
+            DispatchQueue.main.asyncAfter(deadline: UInt64(0.2), execute: {
                 
                 PFPurchase.buyProduct("GoEatPremium248915248915", block: { (error: NSError?) in
                     if error == nil {
                         print("purchase worked")
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         print(error.debugDescription)
                         print(error)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     }
                 })
                 
@@ -178,17 +178,17 @@ class BackTableVC: UITableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action:UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action:UIAlertAction) in
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func displayUpgradeAlert(title: String, message: String) {
+    func displayUpgradeAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Upgrade!", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Upgrade!", style: .default, handler: { (action) in
             
             self.displayBuyAlert("Confirm your In-App Purchase", message: "Do you want to buy one year of awesome GoEat Premium for $2.99?")
             
@@ -196,11 +196,11 @@ class BackTableVC: UITableViewController {
             
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     

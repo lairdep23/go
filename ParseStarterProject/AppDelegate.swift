@@ -25,13 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - UIApplicationDelegate
     //--------------------------------------
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
         
         let branch: Branch = Branch.getInstance()
-        branch.initSessionWithLaunchOptions(launchOptions) { (params: [NSObject : AnyObject]!, error: NSError!) in
+        branch.initSession(launchOptions: launchOptions) { (params: [AnyHashable: Any]!, error: NSError!) in
             
             // params are the deep linked params associated with the link that the user clicked before showing up.
             NSLog("deep link data: %@", params.description)
@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
-        gai.trackUncaughtExceptions = true  // report uncaught exceptions
-        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+        gai?.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
         
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ParseMutableClientConfiguration.server = "https://goeatapp15.herokuapp.com/parse"
         })
         
-        Parse.initializeWithConfiguration(parseConfiguration)
+        Parse.initialize(with: parseConfiguration)
 
 
         // ****************************************************************************
@@ -75,23 +75,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaultACL = PFACL();
 
         // If you would like all objects to be private by default, remove this line.
-        defaultACL.publicReadAccess = true
+        defaultACL.getPublicReadAccess = true
 
-        PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser: true)
+        PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
 
-        if application.applicationState != UIApplicationState.Background {
+        if application.applicationState != UIApplicationState.background {
             // Track an app open here if we launch with a push, unless
             // "content_available" was used to trigger a background push (introduced in iOS 7).
             // In that case, we skip tracking here to avoid double counting the app-open.
 
-            let preBackgroundPush = !application.respondsToSelector(Selector("backgroundRefreshStatus"))
-            let oldPushHandlerOnly = !self.respondsToSelector(#selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
+            let preBackgroundPush = !application.responds(to: #selector(getter: UIApplication.backgroundRefreshStatus))
+            let oldPushHandlerOnly = !self.responds(to: #selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
             var noPushPayload = false;
             if let options = launchOptions {
-                noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
+                noPushPayload = options[UIApplicationLaunchOptionsKey.remoteNotification] != nil;
             }
             if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-                PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+                PFAnalytics.trackAppOpened(launchOptions: launchOptions)
             }
             
             
@@ -124,8 +124,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //
         //  Swift 2.0
         //
-                   let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-                   let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+                   let types: UIUserNotificationType = [.alert, .badge, .sound]
+                   let settings = UIUserNotificationSettings(types: types, categories: nil)
                    application.registerUserNotificationSettings(settings)
                    application.registerForRemoteNotifications()
               
@@ -143,12 +143,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Push Notifications
     //--------------------------------------
 
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let installation = PFInstallation.currentInstallation()
-        installation.setDeviceTokenFromData(deviceToken)
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let installation = PFInstallation.current()
+        installation.setDeviceTokenFrom(deviceToken)
         installation.saveInBackground()
 
-        PFPush.subscribeToChannelInBackground("GoEat") { (succeeded: Bool, error: NSError?) in
+        PFPush.subscribeToChannel(inBackground: "GoEat") { (succeeded: Bool, error: NSError?) in
             if succeeded {
                 print("ParseStarterProject successfully subscribed to push notifications on the broadcast channel.\n");
             } else {
@@ -157,7 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         if error.code == 3010 {
             print("Push notifications are not supported in the iOS Simulator.\n")
         } else {
@@ -165,10 +165,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        PFPush.handlePush(userInfo)
-        if application.applicationState == UIApplicationState.Inactive {
-            PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        PFPush.handle(userInfo)
+        if application.applicationState == UIApplicationState.inactive {
+            PFAnalytics.trackAppOpened(withRemoteNotificationPayload: userInfo)
         }
     }
 
@@ -188,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ///////////////////////////////////////////////////////////
     // Uncomment this method if you are using Facebook
     ///////////////////////////////////////////////////////////
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         
         Branch.getInstance().handleDeepLink(url)
         
@@ -202,14 +202,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         
-        return Branch.getInstance().continueUserActivity(userActivity)
+        return Branch.getInstance().continue(userActivity)
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
         
-        let handledURL = RidesAppDelegate.sharedInstance.application(app, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as? String, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+        let handledURL = RidesAppDelegate.sharedInstance.application(app, openURL: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         if (!handledURL) {
             
         }

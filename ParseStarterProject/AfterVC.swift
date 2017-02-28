@@ -41,12 +41,12 @@ class AfterVC: UIViewController, UITextFieldDelegate {
         address.text = "\(restaurant.address), \(restaurant.city)"
         
         let savedRests = PFObject(className: "savedRests")
-        savedRests["username"] = PFUser.currentUser()?.username
+        savedRests["username"] = PFUser.current()?.username
         savedRests["restName"] = restaurant.name
         savedRests["restLocation"] = "\(restaurant.address), \(restaurant.city), \(restaurant.state) \(restaurant.zip)"
         savedRests["restWebUrl"] = restaurant.websiteUrl
         savedRests["fourUrl"] = restaurant.fourUrl
-        savedRests.saveInBackgroundWithBlock { (success, error) in
+        savedRests.saveInBackground { (success, error) in
             
             if success {
                 print("Saved restaurant successfully")
@@ -63,52 +63,52 @@ class AfterVC: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         animateViewMoving(true, moveValue: 195)
     }
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         animateViewMoving(false, moveValue: 195)
     }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:NSTimeInterval = 0.3
+    func animateViewMoving (_ up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
         let movement:CGFloat = ( up ? -moveValue : moveValue)
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration )
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "AfterVC Screen")
+        tracker?.set(kGAIScreenName, value: "AfterVC Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
     
     
-    @IBAction func exploreButton(sender: AnyObject) {
+    @IBAction func exploreButton(_ sender: AnyObject) {
         
         if restaurant.websiteUrl != "" {
         
-            if let url = NSURL(string: "\(restaurant.websiteUrl)") {
-                UIApplication.sharedApplication().openURL(url)
-                NSURLIsExcludedFromBackupKey
+            if let url = URL(string: "\(restaurant.websiteUrl)") {
+                UIApplication.shared.openURL(url)
+                URLResourceKey.isExcludedFromBackupKey
             }
         } else if restaurant.websiteUrl == "" {
             
-            if let fourUrl = NSURL(string: "\(restaurant.fourUrl)") {
-                UIApplication.sharedApplication().openURL(fourUrl)
-                NSURLIsExcludedFromBackupKey
+            if let fourUrl = URL(string: "\(restaurant.fourUrl)") {
+                UIApplication.shared.openURL(fourUrl)
+                URLResourceKey.isExcludedFromBackupKey
             }
         }
     }
@@ -117,56 +117,56 @@ class AfterVC: UIViewController, UITextFieldDelegate {
     
     
     
-    @IBAction func facebookPost(sender: AnyObject) {
+    @IBAction func facebookPost(_ sender: AnyObject) {
         
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
             let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             facebookSheet.setInitialText("Share on Facebook")
-            self.presentViewController(facebookSheet, animated: true, completion: nil)
+            self.present(facebookSheet, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    @IBAction func twitterPost(sender: AnyObject) {
+    @IBAction func twitterPost(_ sender: AnyObject) {
         
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterSheet.setInitialText("Had an awesome meal with @GoEatiOSApp Eveyone check it out! GoEatiOSApp.com #GoEat")
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
+            self.present(twitterSheet, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
         
         
     }
 
-    @IBAction func saveRestaurant(sender: AnyObject) {
+    @IBAction func saveRestaurant(_ sender: AnyObject) {
         
         
     }
     
-    @IBAction func goBackHome(sender: AnyObject) {
+    @IBAction func goBackHome(_ sender: AnyObject) {
         
-        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0,0,50,50))
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         
         if enterEmail.text != "" {
             
             let emailRequest = PFObject(className: "UserEmail")
-            emailRequest["username"] = PFUser.currentUser()?.username
+            emailRequest["username"] = PFUser.current()?.username
             emailRequest["email"] = self.enterEmail.text
-            emailRequest.saveInBackgroundWithBlock { (success, error) in
+            emailRequest.saveInBackground { (success, error) in
                 
                 if success {
                     
@@ -184,14 +184,14 @@ class AfterVC: UIViewController, UITextFieldDelegate {
         }
         
         let query = PFQuery(className: "restRequest")
-        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
-        query.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) in
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
+        query.findObjectsInBackground { (objects:[PFObject]?, error: NSError?) in
             
             if error == nil {
                 
                 if let objects = objects as [PFObject]! {
                     for object in objects {
-                        object.deleteInBackgroundWithBlock({ (success, error) in
+                        object.deleteInBackground(block: { (success, error) in
                             
                             if success {
                                 
@@ -203,14 +203,14 @@ class AfterVC: UIViewController, UITextFieldDelegate {
                                 timesLoaded = 1
                                 
                                 self.activityIndicator.stopAnimating()
-                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                UIApplication.shared.endIgnoringInteractionEvents()
                                 
                                 self.displayRateAlert("Did you have a good time??", message: "If so, please rate our app! We would really appreciate it!")
                                 
-                                self.navigationController?.popToRootViewControllerAnimated(true)
+                                self.navigationController?.popToRootViewController(animated: true)
                             } else {
                                 self.activityIndicator.stopAnimating()
-                                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                                UIApplication.shared.endIgnoringInteractionEvents()
                             }
                         })
                     }
@@ -220,39 +220,39 @@ class AfterVC: UIViewController, UITextFieldDelegate {
                 
                 self.displayAlert("Could not restart", message: "\(error)")
                 self.activityIndicator.stopAnimating()
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
     }
     
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func displayRateAlert(title: String, message: String) {
+    func displayRateAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Not Now:(", style: .Cancel, handler: { (action) in
-            self.navigationController?.popToRootViewControllerAnimated(true)
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Not Now:(", style: .cancel, handler: { (action) in
+            self.navigationController?.popToRootViewController(animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Rate GoEat", style: .Default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Rate GoEat", style: .default, handler: { (action) in
             
-            UIApplication.sharedApplication().openURL(NSURL(string: "https://itunes.apple.com/app/id1129022364")!)
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            UIApplication.shared.openURL(URL(string: "https://itunes.apple.com/app/id1129022364")!)
+            self.navigationController?.popToRootViewController(animated: true)
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     

@@ -26,14 +26,14 @@ class PrivacyVC: UIViewController, MFMailComposeViewControllerDelegate {
         self.navigationItem.titleView = imageView
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "PrivacyVC Screen")
+        tracker?.set(kGAIScreenName, value: "PrivacyVC Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,14 +42,14 @@ class PrivacyVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     
-    @IBAction func emailUsButton(sender: AnyObject) {
+    @IBAction func emailUsButton(_ sender: AnyObject) {
         
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["GoEatiOSApp@gmail.com"])
             
-            presentViewController(mail, animated: true, completion: nil)
+            present(mail, animated: true, completion: nil)
             
         } else {
             
@@ -60,20 +60,20 @@ class PrivacyVC: UIViewController, MFMailComposeViewControllerDelegate {
         
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
-    func displayAlert(title: String, message: String) {
+    func displayAlert(_ title: String, message: String) {
         
-        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action) in
+        let alert = UIAlertController(title: title , message: message , preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         }))
         
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
         
     }
 

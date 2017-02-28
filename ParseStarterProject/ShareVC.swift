@@ -27,39 +27,39 @@ class ShareVC: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: "ShareVC Screen")
+        tracker?.set(kGAIScreenName, value: "ShareVC Screen")
         
         let builder = GAIDictionaryBuilder.createScreenView()
-        tracker.send(builder.build() as [NSObject : AnyObject])
+        tracker?.send(builder?.build() as [AnyHashable: Any])
     }
 
-    @IBAction func facebookPost(sender: AnyObject) {
+    @IBAction func facebookPost(_ sender: AnyObject) {
         
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
             let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
             facebookSheet.setInitialText("@GoEatiOSApp is awesome! Everyone check it out! www.GoEatiOSApp.com")
-            self.presentViewController(facebookSheet, animated: true, completion: nil)
+            self.present(facebookSheet, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    @IBAction func twitterPost(sender: AnyObject) {
+    @IBAction func twitterPost(_ sender: AnyObject) {
         
-        if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter){
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
             let twitterSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
             twitterSheet.setInitialText("@GoEatiOSApp is awesome! Everyone check it out! www.GoEatiOSApp.com")
-            self.presentViewController(twitterSheet, animated: true, completion: nil)
+            self.present(twitterSheet, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Twitter account to share.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

@@ -27,13 +27,13 @@ class ProfileCell: PFTableViewCell {
     
     
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    @IBAction func goAgain(sender: AnyObject) {
+    @IBAction func goAgain(_ sender: AnyObject) {
         
         let geoCoder = CLGeocoder()
         
@@ -49,7 +49,7 @@ class ProfileCell: PFTableViewCell {
                 
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
                 
-                mapItem.openInMapsWithLaunchOptions(launchOptions)
+                mapItem.openInMaps(launchOptions: launchOptions)
                 
     
             }

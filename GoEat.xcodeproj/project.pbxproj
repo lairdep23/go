@@ -246,6 +246,7 @@
 					81BA81441A49DA1800E65899 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 94BQ9T6DER;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -479,9 +480,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GoEatiOSApp.GoEat;
 				PRODUCT_NAME = GoEat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4709963b-7ad6-4dd2-9638-3cc9ca2205fe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Resources/GoEat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -494,8 +496,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GoEat.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Lairdications LLC (94BQ9T6DER)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Lairdications LLC (94BQ9T6DER)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -504,8 +506,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.GoEatiOSApp.GoEat;
 				PRODUCT_NAME = GoEat;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4709963b-7ad6-4dd2-9638-3cc9ca2205fe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Resources/GoEat-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
